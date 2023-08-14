@@ -20,7 +20,8 @@
 - 结果：
 
 ### 总结
-- Concluded by Thy:
+- Conclusion by Thy:
+- Comments by Thy:
 
 ### 复现基础理论知识
 
