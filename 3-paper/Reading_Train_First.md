@@ -2,7 +2,7 @@
 # A survey of hyperspectral image super-resolution method（标题）
 - 聂江涛 1，张磊 1（作者）
 - Journal of Image and Graphics（刊物）
-- 链接：[paper](https://github.com/ZYJ-Group/Tanghy/blob/main/1-Literature/%E8%B7%A8%E6%A8%A1%E6%80%81%E8%A1%A8%E5%BE%81%E4%B8%8E%E7%94%9F%E6%88%90%E6%8A%80%E6%9C%AF_%E5%88%98%E5%8D%8E%E5%B3%B0.pdf)
+- 链接：[paper](1-Literature/高光谱图像超分辨率重建技术研究进展_聂江涛.pdf)
 - 阅读时间：2023-07-12
 
 ### 标题、摘要、关键词、结论
