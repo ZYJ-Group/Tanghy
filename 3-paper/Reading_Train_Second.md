@@ -1,5 +1,5 @@
-# 文献阅读训练 共三篇（大方向/篇数）
-# Cross-modal representation learning and generation（标题/关键词）
+# 文献阅读训练 共三篇 第二篇（大方向/篇数）
+# Cross-modal representation learning and generation（标题）
 - Liu　Huafeng1，Chen　Jingjing2（作者）
 - Journal of Image and Graphics（刊物）
 - 链接：[paper](https://github.com/ZYJ-Group/Tanghy/blob/main/1-Literature/%E8%B7%A8%E6%A8%A1%E6%80%81%E8%A1%A8%E5%BE%81%E4%B8%8E%E7%94%9F%E6%88%90%E6%8A%80%E6%9C%AF_%E5%88%98%E5%8D%8E%E5%B3%B0.pdf)
