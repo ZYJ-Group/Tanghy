@@ -1,0 +1,166 @@
+var geometry = 
+    /* color: #d63000 */
+    /* displayProperties: [
+      {
+        "type": "rectangle"
+      }
+    ] */
+    ee.Geometry.Polygon(
+        [[[116.0313889986048, 40.08473253369342],
+          [116.0313889986048, 39.71810936483123],
+          [116.7235276704798, 39.71810936483123],
+          [116.7235276704798, 40.08473253369342]]], null, false);
+
+var before_start= '2023-06-01';
+var before_end='2023-07-9';
+ 
+// 洪水发生后的影像时间段
+var after_start='2023-07-10';
+var after_end='2023-08-13';
+ 
+// Sentinel - 1 SAR极化方式设置, 这里选用 VH ，也可以使用 VV
+var polarization = "VH";
+ 
+// 设置轨道方式，有上轨道和下轨道，根据研究区的数据有无选择
+// 这里选择ASCENDING, 在有数据的情况下也可选择DESCENDING
+var pass_direction = "ASCENDING"; // ASCENDING
+ 
+// 设置变化的阈值，由于基本原理是利用SAR数据在洪水变化前后的差异，因此
+// 要得到洪水的范围需要设置阈值j进行分割，这里选择 1.25， 也可以自己设置
+var difference_threshold = 1.25;
+
+
+// 选择研究区，可以手动画矢量范围，也可以使用资产中的研究去边界
+// 为方便运行，这里以代码的形式展现, 范围如下图所示
+
+var aoi = ee.FeatureCollection(geometry);
+ 
+// 选择SAR影像
+var collection= ee.ImageCollection('COPERNICUS/S1_GRD')
+  .filter(ee.Filter.eq('instrumentMode','IW'))
+  .filter(ee.Filter.listContains('transmitterReceiverPolarisation', polarization))
+  .filter(ee.Filter.eq('orbitProperties_pass',pass_direction)) 
+  .filter(ee.Filter.eq('resolution_meters',10))
+  .filterBounds(aoi)
+  .select(polarization);
+ 
+ // 筛选洪水前后的SAR数据
+ // 洪水发生前
+var before_collection = collection.filterDate(before_start, before_end);
+print(before_collection.size())
+// 洪水发生后
+var after_collection = collection.filterDate(after_start,after_end);
+print(after_collection.size())
+// 获取 after_collection 中的图像数量
+var afterImageCount = after_collection.size().getInfo();
+
+// 循环保存每个图像
+for (var i = 0; i < afterImageCount; i++) {
+  var image = ee.Image(after_collection.toList(afterImageCount).get(i));
+  var imageIndex = (i + 1).toString();
+  var paddedIndex = imageIndex.length < 2 ? '0' + imageIndex : imageIndex; // 补零，如 01、02
+  var imageId = "After_" + paddedIndex; // 生成图像名称，如 after_01、after_02
+
+  // 定义导出任务的参数
+  var exportParams = {
+    image: image,
+    description:imageId,
+    folder: 'Your_Google_Drive_Folder_Name', // 替换为你的Google Drive文件夹名
+    fileNamePrefix: imageId,
+    scale: 10, // 设置导出的分辨率
+    region: aoi.geometry() // 设置导出的区域
+  };
+  
+  // 启动导出任务
+  Export.image.toDrive(exportParams);
+}
+
+ 
+// 对筛选的数据进行镶嵌和裁减
+var before = before_collection.mosaic().clip(aoi);
+var after = after_collection.mosaic().clip(aoi);
+ 
+// 对数据进行滤波
+// 设置滤波半径
+var smoothing_radius = 50;
+// 应用滤波
+var before_filtered = before.focal_mean(smoothing_radius, 'circle', 'meters');
+var after_filtered = after.focal_mean(smoothing_radius, 'circle', 'meters');
+ 
+// 显示影像
+Map.centerObject(aoi,8);
+Map.addLayer(before_filtered, {min:-25,max:0}, 'Before Flood',0);
+Map.addLayer(after_filtered, {min:-25,max:0}, 'After Flood',1);
+
+// 利用洪水发生时的影像减去洪水发生前的影像
+var difference = after_filtered.divide(before_filtered);
+ 
+// 应用预定义的差分阈值并创建泛滥范围掩膜
+var threshold = difference_threshold;
+var difference_binary = difference.gt(threshold);
+var difference_binary = difference_binary.updateMask(difference_binary.eq(1))
+// 计算像素的连通性，以消除那些连接到8个或更少邻居的像素
+// 这一操作降低了洪水范围的噪音(椒盐现象-小碎点)
+var connections = difference_binary.connectedPixelCount()//.reproject(difference.projection(), null, 10);    
+var flooded = difference_binary.updateMask(connections.gte(8));
+ 
+//  去除上述洪水淹没范围中坡度大于5度的区域
+// 计算坡度
+var DEM = ee.Image('WWF/HydroSHEDS/03VFDEM');
+var terrain = ee.Algorithms.Terrain(DEM);
+var slope = terrain.select('slope');
+ 
+// 最终的洪水淹没范围
+var flooded = flooded.updateMask(slope.lt(5));
+Map.addLayer(flooded,{palette:"0000FF"},'Flooded areas');
+
+// 计算洪水面积
+// 将每个像素转化为像元面积
+var flood_pixelarea = flooded.select(polarization)
+                            .multiply(ee.Image.pixelArea());
+ 
+// 统计所有像元的和，默认的面积是 ㎡
+var flood_stats = flood_pixelarea.reduceRegion({
+  reducer: ee.Reducer.sum(),              
+  geometry: aoi,
+  scale: 10, 
+  bestEffort: true // 为true时可以减少计算时间
+  });
+  
+// 将 平方米转化为 公顷
+var flood_area_ha = flood_stats
+  .getNumber(polarization)
+  .divide(10000)
+  .round();// 四舍五入
+  
+  // 显示淹没范围面积结果
+  print('area/ha', flood_area_ha);
+  
+  
+  // 导出栅格格式 tif
+Export.image.toDrive({
+  image: flooded, 
+  description: 'Flood_extent_raster',
+  fileNamePrefix: 'flooded',
+  region: aoi, 
+  maxPixels: 1e10
+});
+ 
+// 导出shp格式
+// 栅格转矢量
+var flooded_vec = flooded.reduceToVectors({
+  scale: 10,
+  geometryType:'polygon',
+  geometry: aoi,
+  eightConnected: false,
+  bestEffort:true,
+  tileScale:2,
+});
+ 
+// 导出shp结果
+Export.table.toDrive({
+  collection:flooded_vec,
+  description:'Flood_extent_vector',
+  fileFormat:'SHP',
+  fileNamePrefix:'flooded_vec'
+});

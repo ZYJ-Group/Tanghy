@@ -1,0 +1,54 @@
+// 公众号：成长日记
+
+var years = ee.List.sequence(2022, 2022);
+var months = ee.List.sequence(1, 12);
+// var geometry = ee.FeatureCollection('users/ZhengkunWang/beijingshi');
+// Map.centerObject(geometry, 6);
+
+var collection = ee.ImageCollection("MODIS/006/MYD13Q1")
+                     .filterDate('2022-01-01', '2022-12-30');
+var ndvi = collection.select("NDVI");
+
+var multiply = function(image){
+  var img = image.multiply(0.0001);
+  return img.set('system:time_start', image.get('system:time_start'));
+};
+
+ndvi = ndvi.map(multiply);
+
+var colorizedVis = {
+  min: 0.0,
+  max: 1.0,
+  palette: [
+    'FFFFFF', 'CE7E45', 'DF923D', 'F1B555', 'FCD163', '99B718', '74A901',
+    '66A000', '529400', '3E8601', '207401', '056201', '004C00', '023B01',
+    '012E01', '011D01', '011301'
+  ],
+};
+
+Map.addLayer(ndvi.median().clip(geometry), colorizedVis, 'NDVI');
+
+var dailyNDVI = ee.ImageCollection("MODIS/MOD09GA_006_NDVI")
+                     .filterDate('2022-01-01', '2022-12-30')
+                     .select('NDVI');
+
+Map.addLayer(dailyNDVI.median().clip(geometry), colorizedVis, 'dailyNDVI');
+
+print(ui.Chart.image.series(dailyNDVI, geometry, ee.Reducer.mean(), 1000));
+
+var monthlymeanNDVI =  ee.ImageCollection.fromImages(
+  years.map(function(y) {
+    return months.map(function(m) {
+      var startDate = ee.Date.fromYMD(y, m, 1);
+      var endDate = startDate.advance(1, 'month').advance(-1, 'day');
+      return dailyNDVI
+          .filterDate(startDate, endDate)
+          .mean()
+          .set('year', y)
+          .set('month', m)
+          .set('system:time_start', startDate);
+    });
+  }).flatten()
+);
+
+print(ui.Chart.image.series(monthlymeanNDVI, geometry, ee.Reducer.mean(), 1000));
