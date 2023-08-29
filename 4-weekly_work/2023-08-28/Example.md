@@ -1,4 +1,4 @@
-![2023-08-29-09](https://github.com/ZYJ-Group/Tanghy/assets/94824386/0660ce69-82fa-444e-ae8b-fadd14e85516)# GEE数据库
+# GEE数据库
 ## 一、关键信息
 了解一个常用的 Google Earth Engine（GEE）数据库，您需要掌握以下关键信息：
 
