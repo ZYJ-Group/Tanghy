@@ -131,35 +131,11 @@
 [Sentinel-3 OLCI EFR](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-08-28/code/2023-08-29-1.txt) |	这个数据集包含海洋和陆地颜色仪器（OLCI）数据，提供了海洋表面温度、颜色、海冰厚度等信息，对于海洋和气象研究非常有用。 | ![2023-08-29-12](https://github.com/ZYJ-Group/Tanghy/assets/94824386/6548e341-742c-4601-a113-4ccec3d81c8d) |
 [Sentinel-5P TROPOMI（Offline UV Aerosol Index）](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-08-28/code/2023-08-29-1.txt) |	这个数据集提供对流层监测仪器（TROPOMI）数据，用于评估空气质量，包括臭氧、甲烷、气溶胶等浓度，对于环境和气候研究具有重要意义。（ps.此处仅节选了离线紫外线气溶胶指数，其余还有很多[数据库](https://developers.google.com/earth-engine/datasets/catalog/sentinel-5p)） | ![2023-08-29-13](https://github.com/ZYJ-Group/Tanghy/assets/94824386/608412a0-6fa2-4f5a-bb6f-233451a2baae) |
 
-4. **SRTM DEM 数据集**
+4-6. **SRTM DEM 数据集** **Global Land Cover 数据集**（全球土地覆盖数据集） **WorldPop 人口数据集**
+| 数据库名称 |	内容 | 图像 |
+|  ----  | ----  | --- |
+ NASA SRTM Digital Elevation 30m | 航天飞机雷达地形任务（SRTM，参见Farr 等人，2007 年）数字高程数据是一项国际研究工作，它获得了近全球范围内的数字高程模型。该SRTM V3产品（SRTM Plus）由NASA JPL提供，分辨率为1角秒（约30m）。 |  ![2023-08-29-14](https://github.com/ZYJ-Group/Tanghy/assets/94824386/e4653cae-079d-4e88-9cd6-b9f81ec749d9) |
+ Copernicus Global Land Cover Layers: CGLS-LC100 Collection 3 | 100 m 分辨率动态土地覆盖图 (CGLS-LC100) 可提供 100 m 空间分辨率的全球土地覆盖图。 | ![2023-08-29-15](https://github.com/ZYJ-Group/Tanghy/assets/94824386/ef2ec554-1ea0-41a3-a32a-86f8bd44502d) |
+ WorldPop Global Project Population Data: Estimated Residential Population per 100x100m Grid Square | 关于人口分布的全球高分辨率、当代数据是准确衡量人口增长影响、监测变化和规划干预措施的先决条件。WorldPop 项目旨在通过提供使用透明且经过同行评审的方法构建的详细且开放获取的人口分布数据集来满足这些需求。 | ![2023-08-29-16](https://github.com/ZYJ-Group/Tanghy/assets/94824386/91d4216d-e8d5-4514-b21f-873b743f56bf) |
 
-| 关键信息 |	内容 |
-|  ----  | ----  |
-数据库名称	| SRTM 数字高程模型
-数据类型	| 地表高程数据
-数据内容	| 数字高程模型，用于地形分析、洪水模拟等
-时间范围	| 单次测绘数据，如 SRTM1（2000 年）和 SRTM3（2004 年）
-地理范围	| 全球范围
-数据分辨率	| SRTM1 为 30 米，SRTM3 为 90 米
 
-5. **Global Land Cover 数据集**（全球土地覆盖数据集）
-
-| 关键信息 |	内容 |
-|  ----  | ----  |
-数据库名称	| 全球土地覆盖数据集
-数据类型	| 土地覆盖分类数据
-数据内容	| 土地利用、覆盖分类数据，用于分析土地变化等
-时间范围	| 根据版本不同，覆盖不同的年份
-地理范围	| 全球范围
-数据分辨率	| 根据数据源和版本不同，分辨率也不同
-
-6. **WorldPop 人口数据集**
-
-| 关键信息 |	内容 |
-|  ----  | ----  |
-数据库名称	| WorldPop 人口数据集
-数据类型	| 人口分布和人口密度数据
-数据内容	| 全球范围内的人口分布信息，用于人口统计等
-时间范围	| 根据数据源不同，覆盖不同的年份
-地理范围	| 全球范围
-数据分辨率	| 通常为 100 米到 1 公里
