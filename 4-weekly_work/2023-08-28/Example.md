@@ -118,7 +118,7 @@
 [MOD11A1.061 Terra 陆地表面温度和发射率每日全球 1km](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-08-28/code/2023-08-29-05.txt) | 这个数据集用于测量地表温度和发射率，对于研究地表能量平衡、城市热岛效应、气象变化等非常有用。 | ![2023-08-29-05](https://github.com/ZYJ-Group/Tanghy/assets/94824386/9f8a4fe7-9619-4728-a435-8a22223253b0) |
 [MCD43A4.061 MODIS 天底 BRDF 调整反射率 每日 500m](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-08-28/code/2023-08-29-06.txt) | 经过调整的地表反射率数据，可以用来研究地表反射率特性、土地覆盖变化等。 | ![2023-08-29-06](https://github.com/ZYJ-Group/Tanghy/assets/94824386/4b3d23d3-bddd-4b9a-90c0-909200b2d0b8) |
 [MOD10A1.061 Terra Snow Cover 每日全球 500m](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-08-28/code/2023-08-29-07.txt) | 用于监测积雪分布、融化和覆盖变化，对于高山地区、季节性变化研究等有重要作用。 | ![2023-08-29-07](https://github.com/ZYJ-Group/Tanghy/assets/94824386/4a1b97c8-55d2-4aa7-b2b5-798b37d306f0) |
-[MCD15A3H.061 MODIS 叶面积指数/FPAR 4 天全球 500m](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-08-28/code/2023-08-29-08.txt) | 这这个数据集提供了叶面积指数（LAI）和光合有效辐射（FPAR）数据，对于植被生长监测和生态系统研究非常有用。 | ![2023-08-29-08](https://github.com/ZYJ-Group/Tanghy/assets/94824386/4f2300ad-ad8e-447b-ad48-832b1bf24846) |
+[MCD15A3H.061 MODIS 叶面积指数/FPAR 4 天全球 500m](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-08-28/code/2023-08-29-08.txt) | 这个数据集提供了叶面积指数（LAI）和光合有效辐射（FPAR）数据，对于植被生长监测和生态系统研究非常有用。 | ![2023-08-29-08](https://github.com/ZYJ-Group/Tanghy/assets/94824386/4f2300ad-ad8e-447b-ad48-832b1bf24846) |
 [MCD12Q1.061 MODIS 土地覆盖类型 年 全球 500m](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-08-28/code/2023-08-29-09.txt) | 提供了年度土地覆盖分类数据，对于研究土地利用变化、生态系统分析等非常有用。 | ![2023-08-29-09](https://github.com/ZYJ-Group/Tanghy/assets/94824386/55302291-b22c-4417-acb8-4371af9abb56) |
 
 
