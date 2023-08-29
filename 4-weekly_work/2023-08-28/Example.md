@@ -124,14 +124,12 @@
 
 3. **Sentinel 数据集**（哨兵）
 
-| 关键信息 |	内容 |
-|  ----  | ----  |
-数据库名称	| Sentinel 数据集
-数据类型	| 各种多光谱和雷达数据
-数据内容	| 地表影像、地形数据、海洋数据等
-时间范围	| 根据不同卫星不同，覆盖多个年份
-地理范围	| 全球范围
-数据分辨率	| 不同传感器具有不同的分辨率，如 10 米到 60 米
+| 数据库名称 |	内容 | 图像 |
+|  ----  | ----  | --- |
+[Sentinel-1 SAR GRD](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-08-28/code/2023-08-29-1.txt) |	这个数据集提供全天候、全天时的合成孔径雷达（SAR）数据，对于海洋活动、海冰测绘、人道主义援助、危机应对和森林管理等领域具有重要作用。 | ![2023-08-29-10](https://github.com/ZYJ-Group/Tanghy/assets/94824386/72ca1bb7-39dc-4ba4-8fcb-e69d2ee484ed) |
+[Sentinel-2 MSI（MultiSpectral Instrument, Level-2A）](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-08-28/code/2023-08-29-1.txt) |	这个数据集提供高分辨率的多光谱图像，用于监测植被、土地覆盖变化、水体分布等，广泛应用于农业、环境监测、自然灾害评估等领域。（ps.此处仅节选了Surface Reflectance，其余还有[Top-of-Atmosphere Reflectance](https://developers.google.com/earth-engine/datasets/catalog/sentinel-2)） | ![2023-08-29-11](https://github.com/ZYJ-Group/Tanghy/assets/94824386/c1575b8e-b5f6-4775-9717-5bb0dcc14e2a) |
+[Sentinel-3 OLCI EFR](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-08-28/code/2023-08-29-1.txt) |	这个数据集包含海洋和陆地颜色仪器（OLCI）数据，提供了海洋表面温度、颜色、海冰厚度等信息，对于海洋和气象研究非常有用。 | ![2023-08-29-12](https://github.com/ZYJ-Group/Tanghy/assets/94824386/6548e341-742c-4601-a113-4ccec3d81c8d) |
+[Sentinel-5P TROPOMI（Offline UV Aerosol Index）](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-08-28/code/2023-08-29-1.txt) |	这个数据集提供对流层监测仪器（TROPOMI）数据，用于评估空气质量，包括臭氧、甲烷、气溶胶等浓度，对于环境和气候研究具有重要意义。（ps.此处仅节选了离线紫外线气溶胶指数，其余还有很多[数据库](https://developers.google.com/earth-engine/datasets/catalog/sentinel-5p)） | ![2023-08-29-13](https://github.com/ZYJ-Group/Tanghy/assets/94824386/608412a0-6fa2-4f5a-bb6f-233451a2baae) |
 
 4. **SRTM DEM 数据集**
 
