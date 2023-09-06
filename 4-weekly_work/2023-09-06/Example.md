@@ -1,5 +1,5 @@
 # GEE本地化（大方向/篇数）
-代码
+[代码](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-06/2023-09-06-01.txt)
 
 # 存在问题
 **采集样本**  
@@ -12,3 +12,5 @@ sentinel
 **最大数据量**
 **crs: 'EPSG:4326'**
 
+**传入的数据格式**  
+![2023-09-06-01](https://github.com/ZYJ-Group/Tanghy/assets/94824386/18b1f86b-3718-47b9-b04f-95bed7bd5b69)  
