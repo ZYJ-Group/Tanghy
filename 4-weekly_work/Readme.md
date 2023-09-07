@@ -12,3 +12,12 @@
 
 ## 2023-08-28
 [熟悉GEE](https://github.com/ZYJ-Group/Tanghy/tree/main/4-weekly_work/2023-08-28)
+
+## 2023-09-06
+[GEE本地化](https://github.com/ZYJ-Group/Tanghy/tree/main/4-weekly_work/2023-09-06)
+
+## 2023-09-07
+[GEE本地化](https://github.com/ZYJ-Group/Tanghy/tree/main/4-weekly_work/2023-09-07)
+
+## 2023-09-08
+[GEE本地化](https://github.com/ZYJ-Group/Tanghy/tree/main/4-weekly_work/2023-09-08)
