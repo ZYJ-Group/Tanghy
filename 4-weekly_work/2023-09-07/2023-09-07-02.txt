@@ -1,0 +1,31 @@
+var shanghai = 
+    /* color: #98ff00 */
+    /* shown: false */
+    ee.Geometry.Polygon(
+        [[[121.368421, 31.227125],
+          [121.368421, 31.063525],
+          [121.523872, 31.063525],
+          [121.523872, 31.227125]]]);
+
+var dataset = ee.ImageCollection("COPERNICUS/S2_SR")
+  .filterDate('2022-01-01', '2022-01-11')
+  .filterBounds(shanghai);
+
+var image = dataset.median().clip(shanghai).select('B4');
+print(image);
+
+var min = image.reduceRegion({
+  reducer: ee.Reducer.min(),
+  geometry: shanghai,
+  scale: 30,
+  maxPixels: 1e13
+});
+print('最小像素值：', min);
+
+var max = image.reduceRegion({
+  reducer: ee.Reducer.max(),
+  geometry: shanghai,
+  scale: 30,
+  maxPixels: 1e13
+});
+print('最大像素值：', max);
