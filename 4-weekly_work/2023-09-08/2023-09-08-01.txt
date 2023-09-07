@@ -1,0 +1,90 @@
+// 导入所需模块
+var ee = require('C:/Users/Tanghy/node_modules/@google/earthengine');
+
+// 定义一个函数用来导出图像到本地，根据指定的参数
+const exportImageToLocal = (privateKeyPath, params) => {
+  const { startDate, endDate, topLeftCoordinates, bottomRightCoordinates, scale, datasetId, bandNames, minPixelValue, maxPixelValue } = params;
+
+  // 使用私钥认证并初始化 Earth Engine
+  const privateKey = require(privateKeyPath);
+  ee.data.authenticateViaPrivateKey(privateKey, () => {
+    ee.initialize(null, null, () => {
+
+      // 定义感兴趣区域
+      const region = ee.Geometry.Rectangle(topLeftCoordinates[0], topLeftCoordinates[1], bottomRightCoordinates[0], bottomRightCoordinates[1]);
+
+      // 从数据集中筛选出指定日期范围内的图像集合
+      const collection = ee.ImageCollection(datasetId)
+        .filterDate(startDate, endDate);
+
+      // 检查图像集合是否为空
+      const count = collection.size().getInfo();
+      if (count === 0) {
+        console.error('未找到符合条件的图像集合。');
+        return;
+      }
+
+      // 过滤只包含指定波段数据的图像
+      const filteredCollection = collection.filter(ee.Filter.listContains('system:band_names', bandNames[0]));
+
+      // 检查经过过滤后的图像集合是否为空
+      const filteredCount = filteredCollection.size().getInfo();
+      if (filteredCount === 0) {
+        console.error(`未找到包含 '${bandNames[0]}' 波段的图像。`);
+        return;
+      }
+
+      // 计算过滤后图像集合的中位数
+      const image = filteredCollection.median();
+
+      // 获取导出图像的CRS
+      const projectionInfo = image.projection().getInfo();
+      const crs = projectionInfo.crs;
+
+      // 获取红、绿、蓝波段名称
+      const redBand = bandNames[0];
+      const greenBand = bandNames[1];
+      const blueBand = bandNames[2];
+
+      // 创建可视化图像，分别使用红、绿、蓝波段
+      // 创建可视化图像，分别使用红、绿、蓝波段，并对像素值进行拉伸
+      const rgbImage = ee.Image([image.select(redBand), image.select(greenBand), image.select(blueBand)])
+      .clip(region)
+      .visualize({
+        min: minPixelValue, // 设置最小像素值
+        max: maxPixelValue, // 设置最大像素值
+        bands: ['B4', 'B3', 'B2'], // 指定红、绿、蓝波段的顺序
+      });
+
+
+      // 获取导出图像的下载链接
+      const url = rgbImage.getDownloadURL({
+        name: 'RGB_Image', // 更新导出文件名为 'RGB_Image'
+        scale: scale,
+        crs: crs, // 使用获取的CRS
+        region: region,
+        format: 'GeoTIFF', // 下载的文件格式
+      });
+
+      // 输出导出图像的下载链接
+      console.log('导出RGB图像链接:', url);
+      console.log('RGB图像的CRS:', crs);
+    });
+  });
+};
+
+// 调用函数并传递前端参数
+const privateKeyPath = 'D:/Downloads/ChromeDownload/windy-elevator-396806-6cc8560ffb4e.json';
+const frontendParams = {
+    datasetId: 'COPERNICUS/S2_SR',
+    topLeftCoordinates: [121.368421, 31.227125], // 左上角坐标
+    bottomRightCoordinates: [121.523872, 31.063525], // 右下角坐标
+    startDate: '2022-01-01',
+    endDate: '2022-01-11',
+    bandNames: ['B4', 'B3', 'B2'], // 指定RGB波段顺序
+    scale: 30,  // 像素尺度
+    minPixelValue: 2785, // 最小像素值
+    maxPixelValue: 10765  // 最大像素值
+};
+
+exportImageToLocal(privateKeyPath, frontendParams);
