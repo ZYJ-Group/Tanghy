@@ -17,7 +17,8 @@ sentinel
 
 ## 解决办法
 [代码](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-07/2023-09-07-01.txt)
-- 面对图像一团黑或者一团白 原因可能是minPixelValue和maxPixelValue的值不对
+- 面对图像一团黑或者一团白 原因可能是minPixelValue和maxPixelValue的值不对  
+  查询像素值范围：[代码](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-07/2023-09-07-02.txt)
 
 **实验结果**
 数据集 | 波段 | 图像
