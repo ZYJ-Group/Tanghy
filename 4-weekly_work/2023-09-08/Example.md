@@ -2,27 +2,19 @@
 [代码](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-06/2023-09-06-01.txt)
 
 ## 存在问题
-**采集样本**  
-  需要至少满足以下数据库的要求
-- RGB 
-cloud landset
-- SAR
-sentinel
-
-**最大数据量**
-**crs: 'EPSG:4326'**
-
-**传入的数据格式**  
-![2023-09-06-01](https://github.com/ZYJ-Group/Tanghy/assets/94824386/18b1f86b-3718-47b9-b04f-95bed7bd5b69)  
+- RGB图像的输出
+- 保存地址的更改
 
 ## 解决办法
-[代码](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-07/2023-09-07-01.txt)
-- 面对图像一团黑或者一团白 原因可能是minPixelValue和maxPixelValue的值不对  
-  查询像素值范围：[代码](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-07/2023-09-07-02.txt)
+[代码（RGB)](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-08/2023-09-08-01.txt)  
+[代码（SAR）](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-08/2023-09-08-02.txt)  
+- 修改对应的Image函数
+- 修改关于波段的函数
 
 **实验结果**
 数据集 | 波段 | 图像
 --- | --- | ---
-COPERNICUS/S2_SR | B4 | ![2023-09-07-01](https://github.com/ZYJ-Group/Tanghy/assets/94824386/4e6b03af-827d-4082-a8e2-19ca79da9f80)  
-LANDSAT/LC09/C02/T1_L2 | SR_B4 | ![2023-09-07-02](https://github.com/ZYJ-Group/Tanghy/assets/94824386/de8317fb-f3c0-434f-9e89-cd8b80bb6009)  
-COPERNICUS/S5P/OFFL/L3_CLOUD | cloud_fraction | ![2023-09-07-03](https://github.com/ZYJ-Group/Tanghy/assets/94824386/6950861a-1b27-456a-b03a-630aaf8e0414)  
+COPERNICUS/S2_SR | B4 | ![2023-09-08-01](https://github.com/ZYJ-Group/Tanghy/assets/94824386/5b85e758-0779-4ed1-8bee-721f67405c45)  
+LANDSAT/LC09/C02/T1_L2 | SR_B4 | ![2023-09-08-02](https://github.com/ZYJ-Group/Tanghy/assets/94824386/6946fd1a-0211-4d4d-98fb-5c22ea1be029)  
+COPERNICUS/S1_GRD | VH |  ![2023-09-08-03](https://github.com/ZYJ-Group/Tanghy/assets/94824386/7e7d42ec-a38e-459e-888c-934deb661903)  
+COPERNICUS/S1_GRD | VV |  ![2023-09-08-04](https://github.com/ZYJ-Group/Tanghy/assets/94824386/2ed49dc4-924b-4dda-82fc-13d7ba9bdfc6)  
