@@ -2,7 +2,7 @@
 # Grassland mowing event detection using combined optical, SAR, and weather time series （标题/关键词）
 - Holtgrave，Ann-Kathrin（作者）
 - Remote Sensing of Environment（刊物）
-- 链接：paper
+- 链接：[paper](https://github.com/ZYJ-Group/Tanghy/blob/main/1-Literature/Grassland%20mowing%20event%20detection%20using%20combined%20optical%2C%20SAR%2C%20and%20weather%20time%20series.pdf)
 - 阅读时间：2023-09-15
 
 ### 标题、摘要、关键词、结论
