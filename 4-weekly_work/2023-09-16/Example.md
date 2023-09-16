@@ -1,32 +1,10 @@
-# （大方向/篇数）
-# （标题/关键词）
-- （作者）
-- （刊物）
-- 链接：[paper](https://github.com/ZYJ-Group/Tanghy/blob/main/1-Literature/%E8%B7%A8%E6%A8%A1%E6%80%81%E8%A1%A8%E5%BE%81%E4%B8%8E%E7%94%9F%E6%88%90%E6%8A%80%E6%9C%AF_%E5%88%98%E5%8D%8E%E5%B3%B0.pdf)
-- 阅读时间：
+# pytorch（大方向/篇数）  
+---
+### pytorch的安装和配置  
+主要参考视频：[链接](https://www.bilibili.com/video/BV1S5411X7FY/?spm_id_from=333.999.0.0&vd_source=6714df959b40fdf22d5fa47201de3d2c)  
 
-### 标题、摘要、关键词、结论
-- 标题：
-- 摘要：
-- 关键词：
-- 结论：
-
-### 研究背景
-- 大背景：
-- 小背景：
-
-### 研究内容、成果
-- 内容：
-- 结果：
-
-### 总结
-- Conclusion by Thy:
-- Comments by Thy:
-
-### 复现基础理论知识
-
-
-### 潜在研究点
-
-
-ps. 添加图片：![](https://github.com/RobustFieldAutonomyLab/LeGO-LOAM/raw/master/LeGO-LOAM/launch/demo.gif)
+1. 安装anaconda
+2. 在anaconda配置一个pytorch虚拟环境
+3. 在pytorch虚拟环境中安装相关的库。（AMD显卡使用CPU版本）
+4. 安装pycharm
+5. 在pycharm中使用conda（pytorch环境）的编译器。
