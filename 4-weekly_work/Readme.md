@@ -24,3 +24,6 @@
 
 ## 2023-09-14
 [SAR&时序图像](https://github.com/ZYJ-Group/Tanghy/tree/main/4-weekly_work/2023-09-14)
+
+## 2023-09-16
+[pyTorch的安装](https://github.com/ZYJ-Group/Tanghy/tree/main/4-weekly_work/2023-09-16)  
