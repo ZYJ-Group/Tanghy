@@ -1,0 +1,91 @@
+// 导入所需模块
+var ee = require('C:/Users/Tanghy/node_modules/@google/earthengine');
+var fs = require('fs'); // 导入 Node.js 文件系统模块
+var https = require('https'); // 导入 Node.js 的 https 模块
+
+// 定义一个函数用来导出图像到本地，根据指定的参数
+const exportImageToLocal = (privateKeyPath, params) => {
+  const { startDate, endDate, topLeftCoordinates, bottomRightCoordinates, scale, datasetId, bandNames } = params;
+
+  // 使用私钥认证并初始化 Earth Engine
+  const privateKey = require(privateKeyPath);
+  ee.data.authenticateViaPrivateKey(privateKey, () => {
+    ee.initialize(null, null, () => {
+
+      // 定义感兴趣区域
+      const region = ee.Geometry.Rectangle(topLeftCoordinates[0], topLeftCoordinates[1], bottomRightCoordinates[0], bottomRightCoordinates[1]);
+
+      // 从数据集中筛选出指定日期范围内的图像集合
+      const collection = ee.ImageCollection(datasetId)
+        .filterDate(startDate, endDate)
+        .filterBounds(region);
+
+      // 检查图像集合是否为空
+      const count = collection.size().getInfo();
+      if (count === 0) {
+        console.error('未找到符合条件的图像集合。');
+        return;
+      }
+
+      // 过滤只包含指定波段数据的图像
+      const filteredCollection = collection.select(bandNames);
+
+      // 检查经过过滤后的图像集合是否为空
+      const filteredCount = filteredCollection.size().getInfo();
+      if (filteredCount === 0) {
+        console.error(`未找到包含指定波段的图像。`);
+        return;
+      }
+
+      // 计算过滤后图像集合的中位数
+      const image = filteredCollection.median();
+
+      // 获取导出图像的CRS
+      const projectionInfo = image.projection().getInfo();
+      const crs = projectionInfo.crs;
+
+      // 生成当前时间的时间戳
+      const now = new Date();
+      const timestamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}-${String(now.getHours()).padStart(2, '0')}_${String(now.getMinutes()).padStart(2, '0')}_${String(now.getSeconds()).padStart(2, '0')}`;
+
+      // 生成下载路径，将时间戳作为文件名的一部分
+      const downloadPath = `D:/Graduate_first/GEE_download/SAR_Image_${timestamp}.tif`;
+
+      // 下载图像
+      image.getDownloadURL({
+        name: `SAR_Image_${timestamp}`, // 更新导出文件名
+        scale: scale,
+        crs: crs, // 使用获取的CRS
+        region: region,
+        format: 'GeoTIFF' // 下载的文件格式
+      }, (url) => {
+        console.log(`图像的下载链接：${url}`); // 打印下载链接到控制台
+
+        // 使用 Node.js 的 https 模块发送请求并将响应保存到文件
+        https.get(url, (response) => {
+          if (response.statusCode === 200) {
+            const file = fs.createWriteStream(downloadPath);
+            response.pipe(file);
+            console.log(`图像已下载到：${downloadPath}`);
+          } else {
+            console.error(`下载图像时出错，HTTP 状态码：${response.statusCode}`);
+          }
+        });
+      });
+    });
+  });
+};
+
+// 调用函数并传递前端参数
+const privateKeyPath = 'D:/Downloads/ChromeDownload/windy-elevator-396806-6cc8560ffb4e.json';
+const frontendParams = {
+  datasetId: 'COPERNICUS/S1_GRD',
+  topLeftCoordinates: [121.368421, 31.227125],
+  bottomRightCoordinates: [121.523872, 31.063525],
+  startDate: '2022-01-01',
+  endDate: '2022-01-11',
+  bandNames: ['VV', 'VH'], // 指定VV和VH波段名称
+  scale: 30
+};
+
+exportImageToLocal(privateKeyPath, frontendParams);
