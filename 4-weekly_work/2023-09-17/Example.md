@@ -1,32 +1,16 @@
-# （大方向/篇数）
-# （标题/关键词）
-- （作者）
-- （刊物）
-- 链接：[paper](https://github.com/ZYJ-Group/Tanghy/blob/main/1-Literature/%E8%B7%A8%E6%A8%A1%E6%80%81%E8%A1%A8%E5%BE%81%E4%B8%8E%E7%94%9F%E6%88%90%E6%8A%80%E6%9C%AF_%E5%88%98%E5%8D%8E%E5%B3%B0.pdf)
-- 阅读时间：
-
-### 标题、摘要、关键词、结论
-- 标题：
-- 摘要：
-- 关键词：
-- 结论：
-
-### 研究背景
-- 大背景：
-- 小背景：
-
-### 研究内容、成果
-- 内容：
-- 结果：
-
-### 总结
-- Conclusion by Thy:
-- Comments by Thy:
-
-### 复现基础理论知识
+# GEE平台开发（大方向/篇数）
+## 需要改进的地方
+1. 导出图片的时间过长
+2. 过大的范围无法导出  
+![2023-09-17-01](https://github.com/ZYJ-Group/Tanghy/assets/94824386/5f41ab13-4566-440b-94cb-e05c9f354794)  
+3. 导出的图片保留云  
+4. 固定最大最小像素值  
+(ps.原先的代码:RGB  SAR)  
+ 
+## 改进之后  
+数据库 | 波段 | 现在的代码 | 现在的时间 |现在的图像
+--- | --- | --- | --- | --- 
+COPERNICUS/S2_HARMONIZED | 'B4', 'B3', 'B2' | 代码 | 70.442 seconds | ![2023-09-17-03](https://github.com/ZYJ-Group/Tanghy/assets/94824386/2662bf9e-ee1a-4391-ac1f-ffdf839c536a)  
+COPERNICUS/S1_GRD | 'VV', 'VH' | 代码 | 60.905 seconds | ![2023-09-17-04](https://github.com/ZYJ-Group/Tanghy/assets/94824386/49e424c3-864b-4628-b540-1422a6ba6fe0)  
 
 
-### 潜在研究点
-
-
-ps. 添加图片：![](https://github.com/RobustFieldAutonomyLab/LeGO-LOAM/raw/master/LeGO-LOAM/launch/demo.gif)
