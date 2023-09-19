@@ -27,3 +27,13 @@
 
 ## 2023-09-16
 [pyTorch的安装](https://github.com/ZYJ-Group/Tanghy/tree/main/4-weekly_work/2023-09-16)  
+
+## 2023-09-17
+[GEE平台开发](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-17/Example.md)  
+
+## 2023-09-18
+[UNet复现](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-18/Example.md)  
+
+## 2023-09-19
+[UNet复现](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-19/Example.md)
+
