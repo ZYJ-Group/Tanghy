@@ -1,0 +1,23 @@
+Validation round: 100%|███████████████████▉| 507/508 [00:38<00:00, 12.95batch/s]
+                                                                                INFO: Validation Dice score: 0.9904765486717224
+Epoch 5/5: 100%|██████| 4580/4580 [19:30<00:00,  3.91img/s, loss (batch)=0.0067]
+INFO: Checkpoint 5 saved!
+wandb: Waiting for W&B process to finish... (success).
+wandb: 
+wandb: Run history:
+wandb:           epoch ▁▁▁▁▁▁▁▁▃▃▃▃▃▃▃▃▅▅▅▅▅▅▅▅▆▆▆▆▆▆▆▆████████
+wandb:   learning rate ███████████████████████▁▁
+wandb:            step ▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇███
+wandb:      train loss ▄█▃▂▂▂▂▂▂▂▂▄▂▄▁▂▂▁▁▁▁▁▁▁▁▃▁▂▁▁▁▁▁▁▁▂▁▁▁▁
+wandb: validation Dice ▇▇▁▇█▇▆▇█▇█▇▇█████▇██████
+wandb: 
+wandb: Run summary:
+wandb:           epoch 5
+wandb:   learning rate 0.0
+wandb:            step 22900
+wandb:      train loss 0.0067
+wandb: validation Dice 0.99048
+wandb: 
+wandb: Synced winter-glade-3: https://wandb.ai/tanghy/U-Net/runs/3o52kh4b
+wandb: Synced 5 W&B file(s), 75 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230919_141446-3o52kh4b/logs
