@@ -1,32 +1,11 @@
-# （大方向/篇数）
-# （标题/关键词）
-- （作者）
-- （刊物）
-- 链接：[paper](https://github.com/ZYJ-Group/Tanghy/blob/main/1-Literature/%E8%B7%A8%E6%A8%A1%E6%80%81%E8%A1%A8%E5%BE%81%E4%B8%8E%E7%94%9F%E6%88%90%E6%8A%80%E6%9C%AF_%E5%88%98%E5%8D%8E%E5%B3%B0.pdf)
-- 阅读时间：
+# GEEmap（大方向/篇数）
+### 1. 登录账号  
+![2023-09-21-01](https://github.com/ZYJ-Group/Tanghy/assets/94824386/f860b177-fce1-4f41-8a58-07df9d7dbcf0)
+![2023-09-21-02](https://github.com/ZYJ-Group/Tanghy/assets/94824386/3604aff3-364c-459f-9c15-dce788863185)
+![2023-09-21-03](https://github.com/ZYJ-Group/Tanghy/assets/94824386/b3e74eb2-9389-4b4f-a440-0627d52396c8)  
+**解决办法**  
+回到gee平台，将对应的云项目进行注册。  
+![2023-09-21-04](https://github.com/ZYJ-Group/Tanghy/assets/94824386/e3e056a1-c6c8-46f5-a6be-f2273e107393)
 
-### 标题、摘要、关键词、结论
-- 标题：
-- 摘要：
-- 关键词：
-- 结论：
-
-### 研究背景
-- 大背景：
-- 小背景：
-
-### 研究内容、成果
-- 内容：
-- 结果：
-
-### 总结
-- Conclusion by Thy:
-- Comments by Thy:
-
-### 复现基础理论知识
-
-
-### 潜在研究点
-
-
-ps. 添加图片：![](https://github.com/RobustFieldAutonomyLab/LeGO-LOAM/raw/master/LeGO-LOAM/launch/demo.gif)
+### 2. 尝试运行部分代码  
+![2023-09-21-05](https://github.com/ZYJ-Group/Tanghy/assets/94824386/b0d6401f-2de1-4636-a184-02d8c4c28095)  
