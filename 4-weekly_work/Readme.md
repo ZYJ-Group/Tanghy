@@ -37,3 +37,10 @@
 ## 2023-09-19
 [UNet复现](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-19/Example.md)  
 [整理](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-19/Example%20-%20%E5%89%AF%E6%9C%AC.md)  
+
+## 2023-09-20
+[UNet复现 and GEEmap](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-20/Example.md)  
+
+## 2023-09-21
+[GEEmap](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-21/Example.md)  
+
