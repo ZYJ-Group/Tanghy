@@ -1,0 +1,2 @@
+pip uninstall Traitlets
+pip install Traitlets==5.9.0

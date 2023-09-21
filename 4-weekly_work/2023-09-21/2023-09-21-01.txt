@@ -1,0 +1,47 @@
+# Import the necessary libraries
+import ee
+import geemap
+
+# Initialize Earth Engine
+ee.Initialize()
+
+# Define the region of interest (ROI) using coordinates
+roi = ee.Geometry.Rectangle([122.368421, 31.227125, 122.468421, 31.327125])
+
+# Define the date range
+start_date = '2022-01-01'
+end_date = '2022-03-11'
+
+# Load the Sentinel-1 GRD image collection and filter it
+collection = (ee.ImageCollection('COPERNICUS/S1_GRD')
+              .filterBounds(roi)
+              .filterDate(ee.Date(start_date), ee.Date(end_date)))
+
+# Create an interactive map
+Map = geemap.Map()
+
+# Center the map on the ROI
+Map.centerObject(roi, 10)
+
+# Add the ROI as a yellow rectangle on the map
+Map.addLayer(ee.Image(0).mask(0).paint(roi, 0, 2), {'palette': 'yellow'}, 'ROI')
+
+# Function to calculate and set VV-VH ratio
+def setRatio(image):
+    vv = image.select('VV')
+    vh = image.select('VH')
+    ratio = vv.divide(vh).rename('VV_VH_Ratio')
+    return image.addBands(ratio)
+
+# Map the setRatio function over the collection
+collection_with_ratio = collection.map(setRatio)
+
+# Create a composite image by reducing the collection to the median
+composite = collection_with_ratio.median()
+
+# Visualize the composite image
+vis_params = {'min': 0.0, 'max': 2.0, 'palette': ['blue', 'white', 'green']}
+Map.addLayer(composite.select('VV_VH_Ratio'), vis_params, 'Sentinel-1 VV/VH Ratio')
+
+# Display the map in the notebook
+Map
