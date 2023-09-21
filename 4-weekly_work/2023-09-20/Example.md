@@ -1,4 +1,4 @@
-# UNet复现 and Geemap（大方向/篇数）
+# UNet复现 and GEEmap（大方向/篇数）
 ### UNet  
 **出现的问题**
 在服务器中运行的时候，无法import datasets里面的py文件。（但是可以import 类似的utils里面的py文件）
