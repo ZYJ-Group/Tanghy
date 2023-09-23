@@ -1,0 +1,43 @@
+import geemap
+import ee
+import datetime
+
+# 定义区域（杭州范围）
+hongzhou_region = ee.Geometry.Polygon(
+    [[[119.4491, 30.1634],
+      [120.3823, 30.1634],
+      [120.3823, 31.2867],
+      [119.4491, 31.2867]]])
+
+# 定义日期范围
+start_date = '2020-01-10'
+end_date = '2020-02-20'
+
+# 选择 Sentinel-1 数据集
+collection = (
+    ee.ImageCollection('COPERNICUS/S1_GRD')
+    .filterBounds(hongzhou_region)
+    .filterDate(ee.Date(start_date), ee.Date(end_date))
+    .select(['VV', 'VH'])  # 选择B4、B3和B2波段
+
+)
+
+# 计算符合条件的图像的平均值
+image_mean = collection.reduce(ee.Reducer.median())
+
+
+# 设置区域参数
+region = hongzhou_region
+
+# 获取当前时间
+current_time = datetime.datetime.now()
+# 生成文件夹名称
+folder_name = current_time.strftime('%Y_%m_%d_%H_%M_%S_%f')+ '.tif'
+
+# 导出多波段图像
+out_dir = 'D:\\Graduate_first\\GEE_download\\' + folder_name
+# geemap.download_ee_image(image_mean, out_dir, scale=60, region=region, crs='EPSG:4326')
+
+Map = geemap.Map()
+Map.addLayer(image_mean,{'bands':['VV_median','VH_median']},'image')
+Map

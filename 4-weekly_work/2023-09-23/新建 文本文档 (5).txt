@@ -1,0 +1,55 @@
+import geemap
+import ee
+import datetime
+
+# 定义区域（杭州范围）
+hangzhou_region = ee.Geometry.Polygon(
+    [[[119.4491, 30.1634],
+      [120.3823, 30.1634],
+      [120.3823, 31.2867],
+      [119.4491, 31.2867]]])
+
+# 定义日期范围
+start_date = '2020-01-10'
+end_date = '2020-02-20'
+
+# 选择LANDSAT 8数据集
+collection = (
+    ee.ImageCollection('LANDSAT/LC08/C01/T1_TOA')
+    .filterBounds(hangzhou_region)
+    .filterDate(ee.Date(start_date), ee.Date(end_date))
+    .select(['B5', 'B4', 'B3'])  # 选择B4、B3和B2波段
+)
+
+# 计算符合条件的图像的平均值
+image_mean = collection.reduce(ee.Reducer.median())
+
+# 为每个波段分配颜色
+vis_params = {
+    'bands': ['B5_median', 'B4_median', 'B3_median'],
+    'gamma': 2,
+}
+
+# # 应用可视化参数到图像
+# image_mean = image_mean.visualize(**vis_params)
+
+# # 创建Map对象并可视化多波段图像
+# Map = geemap.Map()
+# Map.centerObject(hangzhou_region, 10)
+# Map.addLayer(image_mean, vis_params)
+# Map
+
+# 获取当前时间
+current_time = datetime.datetime.now()
+# 生成文件夹名称
+folder_name = current_time.strftime('%Y_%m_%d_%H_%M_%S_%f') + '.tif'
+
+# 导出多波段图像
+out_dir = 'D:\\Graduate_first\\GEE_download\\' + folder_name
+
+# 导出已可视化的图像
+geemap.ee_export_image(image_mean,
+    out_dir,
+    crs='EPSG:4326',
+    scale=240,
+    region=hangzhou_region)
