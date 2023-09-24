@@ -44,3 +44,8 @@
 ## 2023-09-21
 [GEEmap](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-21/Example.md)  
 
+## 2023-09-22
+[GEEmap](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-22/Example.md)  
+
+## 2023-09-23
+[GEEmap](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-23/Example.md)  
