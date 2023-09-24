@@ -1,32 +1,12 @@
-# （大方向/篇数）
-# （标题/关键词）
-- （作者）
-- （刊物）
-- 链接：[paper](https://github.com/ZYJ-Group/Tanghy/blob/main/1-Literature/%E8%B7%A8%E6%A8%A1%E6%80%81%E8%A1%A8%E5%BE%81%E4%B8%8E%E7%94%9F%E6%88%90%E6%8A%80%E6%9C%AF_%E5%88%98%E5%8D%8E%E5%B3%B0.pdf)
-- 阅读时间：
+# GEEmap（大方向/篇数）
+### 部分实验结果图
+1. [代码](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-23/%E6%96%B0%E5%BB%BA%20%E6%96%87%E6%9C%AC%E6%96%87%E6%A1%A3%20(5).txt)    
+结果图：  
+![2023-09-23-01](https://github.com/ZYJ-Group/Tanghy/assets/94824386/a999acfe-54ae-4f67-abe1-3e4ce17dde7c)  
 
-### 标题、摘要、关键词、结论
-- 标题：
-- 摘要：
-- 关键词：
-- 结论：
+2. [代码](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-23/%E6%96%B0%E5%BB%BA%20%E6%96%87%E6%9C%AC%E6%96%87%E6%A1%A3%20(5).txt)     
+结果图：  
+![2023-09-23-02](https://github.com/ZYJ-Group/Tanghy/assets/94824386/e92e1fa1-acb6-46c4-83ed-2740a0f99f0d)  
 
-### 研究背景
-- 大背景：
-- 小背景：
-
-### 研究内容、成果
-- 内容：
-- 结果：
-
-### 总结
-- Conclusion by Thy:
-- Comments by Thy:
-
-### 复现基础理论知识
-
-
-### 潜在研究点
-
-
-ps. 添加图片：![](https://github.com/RobustFieldAutonomyLab/LeGO-LOAM/raw/master/LeGO-LOAM/launch/demo.gif)
+### 小目标  
+在pycharm中运行代码
