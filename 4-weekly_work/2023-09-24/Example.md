@@ -18,3 +18,8 @@
 2. [代码](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-24/%E6%96%B0%E5%BB%BA%20%E6%96%87%E6%9C%AC%E6%96%87%E6%A1%A3%20(3).txt)  
 结果图：
 ![2023-09-24-03](https://github.com/ZYJ-Group/Tanghy/assets/94824386/5107ec87-2a74-4433-8858-7f1c2da62fa9)  
+
+3. [代码](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-24/%E6%96%B0%E5%BB%BA%20%E6%96%87%E6%9C%AC%E6%96%87%E6%A1%A3%20(4).txt)  
+结果图：
+![2023-09-24-04](https://github.com/ZYJ-Group/Tanghy/assets/94824386/aea52715-81cd-4fe9-92b4-3eb8daf09c74)  
+![2023-09-24-05](https://github.com/ZYJ-Group/Tanghy/assets/94824386/933625ba-cf73-4e43-b584-0556b5cc46f3)  
