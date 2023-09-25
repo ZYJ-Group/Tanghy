@@ -1,0 +1,73 @@
+import datetime
+import ee
+import geemap
+import folium
+import webbrowser
+
+# Authenticate with Earth Engine
+ee.Initialize()
+
+# Define the region (Hangzhou area)
+hangzhou_region = ee.Geometry.Polygon(
+    [[[119.4491, 30.1634],
+      [120.3823, 30.1634],
+      [120.3823, 31.2867],
+      [119.4491, 31.2867]]])
+
+# Define date range
+start_date = '2020-01-10'
+end_date = '2020-02-20'
+
+# Select the Landsat 8 dataset
+collection = (
+    ee.ImageCollection('LANDSAT/LC08/C01/T1_TOA')
+    .filterBounds(hangzhou_region)
+    .filterDate(ee.Date(start_date), ee.Date(end_date))
+    .select(['B4', 'B3', 'B2'])  # Select bands B4, B3, and B2
+)
+
+# Define visualization parameters
+vis_params = {
+    'bands': ['B4', 'B3', 'B2'],
+    'gamma': 1.4,
+    'min': 0,
+    'max': 0.3
+}
+
+# Calculate the median of the images that meet the criteria
+image_median = collection.median()
+
+# Set the export parameters
+region = hangzhou_region
+scale = 30  # Change this to your desired scale
+
+# Generate a timestamp for the folder name
+current_time = datetime.datetime.now()
+folder_name = current_time.strftime('%Y_%m_%d_%H_%M_%S_%f') + '.tif'
+
+# 导出多波段图像
+out_dir = 'D:\\Graduate_first\\GEE_download\\' + folder_name
+
+# 使用geemap导出图像
+# geemap.ee_export_image(image_mean, filename=out_dir, scale=60, region=region, file_per_band=False)
+
+# Display the map using Folium
+map = folium.Map(location=[30.5, 120], zoom_start=8)  # Set the initial map location and zoom level
+
+# Add the Landsat image as an overlay to the map
+map_id_dict = image_median.getMapId(vis_params)
+folium.TileLayer(
+    tiles=map_id_dict['tile_fetcher'].url_format,
+    attr='Map Data &copy; <a href="https://earthengine.google.com/">Google Earth Engine</a>',
+    overlay=True,
+    name='Landsat 8 Median'
+).add_to(map)
+
+# Add a layer control panel to the map
+folium.LayerControl().add_to(map)
+
+# Save the map as an HTML file
+map.save("Landsat_8_images.html")
+
+# Open the HTML file in a web browser
+webbrowser.open("Landsat_8_images.html")
