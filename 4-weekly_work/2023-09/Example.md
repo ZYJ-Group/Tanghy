@@ -276,7 +276,109 @@ Export.table.toDrive({
 ![Area_flood](https://github.com/Axianlatiao/Test/assets/94824386/1d9c13c5-0769-4cde-8f51-e1c8e43830fc)
 
 ### GEE本地化
+#### Nodejs与GEE集成
+1. 安装Node.js环境。  
+2. 安装与GEE的API集成的Node.js库，'@google/earthengine'。  
+3. 认证。使用GEE提供的认证机制，此处使用服务账号方式。  
+4. 初始化GEE，提供认证凭据。  
+5. 使用GEE API。  
+参考网站：[链接](https://developers.google.com/earth-engine/guides/npm_install)  
+#### 任务要求
+1. 数据库要求，至少满足一个SAR图像，一个RGB图像。
+2. 传入数据格式如图所示。
+![2023-09-06-01](https://github.com/ZYJ-Group/Tanghy/assets/94824386/18b1f86b-3718-47b9-b04f-95bed7bd5b69)
+3. RGB图像需要至少加载B2、B3和B4的波段，SAR图像需要至少加载VV和VH的波段。
+4. 要将图像保存到本地。
+#### 遇到的问题
+1. 生成图像一团黑或者一团白。
+解决办法：minPixelValue和maxPixelValue的值不对，  查询像素值范围：[代码](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-07/2023-09-07-02.txt)  
+2. 默认保存为zip格式。
+解决办法：加入format下载的文件格式。
+```
+      const url = rgbImage.getDownloadURL({
+        name: 'RGB_Image', // 更新导出文件名为 'RGB_Image'
+        scale: scale,
+        crs: crs, // 使用获取的CRS
+        region: region,
+        format: 'GeoTIFF', // 下载的文件格式
+      });
+```
+3. 导出图片的时间过长。
+4. 过大范围无法导出。
+且尚无办法解决问题3和4。
+
+**最终的实验结果**  
+数据库 | 波段 | 现在的代码 | 现在的时间 |现在的图像
+--- | --- | --- | --- | --- 
+COPERNICUS/S2_HARMONIZED | 'B4', 'B3', 'B2' | [代码](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-17/2023-09-17-03.txt) | 70.442 seconds | ![2023-09-17-03](https://github.com/ZYJ-Group/Tanghy/assets/94824386/2662bf9e-ee1a-4391-ac1f-ffdf839c536a)  
+COPERNICUS/S1_GRD | 'VV', 'VH' | [代码](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-17/2023-09-17-04.txt) | 60.905 seconds | ![2023-09-17-04](https://github.com/ZYJ-Group/Tanghy/assets/94824386/49e424c3-864b-4628-b540-1422a6ba6fe0)  
+#### GEEmap
+1. [安装GEEmap](https://github.com/ZYJ-Group/Tanghy/edit/main/4-weekly_work/2023-09-20/Example.md)    
+2. [登录账号](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-21/Example.md)  
+
+#### 结果图
+1. [代码](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-23/%E6%96%B0%E5%BB%BA%20%E6%96%87%E6%9C%AC%E6%96%87%E6%A1%A3%20(5).txt)    
+结果图：  
+![2023-09-23-01](https://github.com/ZYJ-Group/Tanghy/assets/94824386/a999acfe-54ae-4f67-abe1-3e4ce17dde7c)  
+
+2. [代码](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-23/%E6%96%B0%E5%BB%BA%20%E6%96%87%E6%9C%AC%E6%96%87%E6%A1%A3%20(5).txt)     
+结果图：  
+![2023-09-23-02](https://github.com/ZYJ-Group/Tanghy/assets/94824386/e92e1fa1-acb6-46c4-83ed-2740a0f99f0d)  
+
+#### python和GEE的集成
+1. 配置 python API：
+- 安装gcloud CLI [网站](https://cloud.google.com/sdk/docs/install?hl=zh-cn)  
+- 遇到网络问题，无法正常认证。  
+2. 解决办法：
+[链接](https://zhuanlan.zhihu.com/p/259377035)
+3. 解决重复验证
+![2023-09-24-02](https://github.com/ZYJ-Group/Tanghy/assets/94824386/e1b98ad5-8aef-4cee-8e9a-b67231a93e76)  
+参考网站：[geemap代码](https://book.geemap.org/chapters/06_data_analysis.html)  
+[python API](https://developers.google.com/earth-engine/tutorials/community/intro-to-python-api)
+
+#### 结果图
+1. [代码](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-24/%E6%96%B0%E5%BB%BA%20%E6%96%87%E6%9C%AC%E6%96%87%E6%A1%A3%20(2).txt)  
+结果图：
+![2023-09-24-01](https://github.com/ZYJ-Group/Tanghy/assets/94824386/de805320-ef1a-4730-aea3-244d99f41019)  
+
+2. [代码](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-24/%E6%96%B0%E5%BB%BA%20%E6%96%87%E6%9C%AC%E6%96%87%E6%A1%A3%20(3).txt)  
+结果图：
+![2023-09-24-03](https://github.com/ZYJ-Group/Tanghy/assets/94824386/5107ec87-2a74-4433-8858-7f1c2da62fa9)  
+
+3. [代码](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-24/%E6%96%B0%E5%BB%BA%20%E6%96%87%E6%9C%AC%E6%96%87%E6%A1%A3%20(4).txt)  
+结果图：
+![2023-09-24-04](https://github.com/ZYJ-Group/Tanghy/assets/94824386/aea52715-81cd-4fe9-92b4-3eb8daf09c74)  
+![2023-09-24-05](https://github.com/ZYJ-Group/Tanghy/assets/94824386/933625ba-cf73-4e43-b584-0556b5cc46f3)  
 
 ### UNet复现
+#### pytorch的安装和配置。
+1. 安装anaconda
+2. 在anaconda配置一个pytorch虚拟环境
+3. 在pytorch虚拟环境中安装相关的库。（AMD显卡使用CPU版本）
+4. 安装pycharm
+5. 在pycharm中使用conda（pytorch环境）的编译器。
+
+主要参考视频：[链接](https://www.bilibili.com/video/BV1S5411X7FY/?spm_id_from=333.999.0.0&vd_source=6714df959b40fdf22d5fa47201de3d2c)  
+
+#### 准备工作
+1. pycharm安装  
+2. mobaXterm安装  
+3. 连接服务器  
+编辑配置    
+![2023-09-18-01](https://github.com/ZYJ-Group/Tanghy/assets/94824386/32a20fa1-94d5-4d43-a04c-082230a3ce19)  
+配置路径映射    
+![2023-09-18-02](https://github.com/ZYJ-Group/Tanghy/assets/94824386/b6d76c23-1a9f-40d6-a20d-9091ab2e8f7e)   
+4. github找到示例代码  
+
+#### 模型下载和测试
+1. 注册wandb。
+2. 服务器连接网络。
+3. 从kaggle上下载数据集。
+
+#### 结果图
+1. wandb云端数据结果  
+![2023-09-19-11](https://github.com/ZYJ-Group/Tanghy/assets/94824386/18095f1b-ce14-4cad-a4ba-dadc3c67e90b)  
+2. predict结果  
+![2023-09-19-10](https://github.com/ZYJ-Group/Tanghy/assets/94824386/1fbc2e7e-df03-4345-bfa9-39c8ba72d697)  
 
 ### 计划安排
