@@ -5,11 +5,19 @@
   - [代码_最终](#代码_最终)
   - [结果图](#结果图)
 - [**GEE本地化**](#GEE本地化)
-  - [注册](#注册)
-  - [注册](#注册)
+  - [Nodejs与GEE集成](#Nodejs与GEE集成)
+  - [任务要求](#任务要求)
+  - [遇到的问题](#遇到的问题)
+  - [结果图](#结果图)
+  - [GEEmap](#GEEmap)
+  - [结果图](#结果图)
+  - [python和GEE的集成](#python和GEE的集成)
+  - [结果图](#结果图)
 - [**UNet复现**](#UNet复现)
-  - [注册](#注册)
-  - [注册](#注册)
+  - [pytorch的安装和配置](#pytorch的安装和配置)
+  - [准备工作](#准备工作)
+  - [模型下载和测试](#模型下载和测试)
+  - [结果图](#结果图)
 - [**计划安排**](#计划安排)
   - [注册](#注册)
   - [注册](#注册)
@@ -307,11 +315,12 @@ Export.table.toDrive({
 4. 过大范围无法导出。
 且尚无办法解决问题3和4。
 
-**最终的实验结果**  
+#### 结果图
 数据库 | 波段 | 现在的代码 | 现在的时间 |现在的图像
 --- | --- | --- | --- | --- 
 COPERNICUS/S2_HARMONIZED | 'B4', 'B3', 'B2' | [代码](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-17/2023-09-17-03.txt) | 70.442 seconds | ![2023-09-17-03](https://github.com/ZYJ-Group/Tanghy/assets/94824386/2662bf9e-ee1a-4391-ac1f-ffdf839c536a)  
 COPERNICUS/S1_GRD | 'VV', 'VH' | [代码](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-17/2023-09-17-04.txt) | 60.905 seconds | ![2023-09-17-04](https://github.com/ZYJ-Group/Tanghy/assets/94824386/49e424c3-864b-4628-b540-1422a6ba6fe0)  
+
 #### GEEmap
 1. [安装GEEmap](https://github.com/ZYJ-Group/Tanghy/edit/main/4-weekly_work/2023-09-20/Example.md)    
 2. [登录账号](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-21/Example.md)  
@@ -351,7 +360,7 @@ COPERNICUS/S1_GRD | 'VV', 'VH' | [代码](https://github.com/ZYJ-Group/Tanghy/bl
 ![2023-09-24-05](https://github.com/ZYJ-Group/Tanghy/assets/94824386/933625ba-cf73-4e43-b584-0556b5cc46f3)  
 
 ### UNet复现
-#### pytorch的安装和配置。
+#### pytorch的安装和配置
 1. 安装anaconda
 2. 在anaconda配置一个pytorch虚拟环境
 3. 在pytorch虚拟环境中安装相关的库。（AMD显卡使用CPU版本）
