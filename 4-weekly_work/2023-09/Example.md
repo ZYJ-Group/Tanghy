@@ -18,9 +18,7 @@
   - [准备工作](#准备工作)
   - [模型下载和测试](#模型下载和测试)
   - [结果图](#结果图)
-- [**计划安排**](#计划安排)
-  - [注册](#注册)
-  - [注册](#注册)
+- [**其他**](#其他)
 
 
 ### 北京洪水变化时序分析
@@ -390,4 +388,8 @@ COPERNICUS/S1_GRD | 'VV', 'VH' | [代码](https://github.com/ZYJ-Group/Tanghy/bl
 2. predict结果  
 ![2023-09-19-10](https://github.com/ZYJ-Group/Tanghy/assets/94824386/1fbc2e7e-df03-4345-bfa9-39c8ba72d697)  
 
-### 计划安排
+### 其他
+1. [熟悉GEE](https://github.com/ZYJ-Group/Tanghy/tree/main/4-weekly_work/2023-08-28/Example.md)
+2. [SAR图像辅助光学图像去云（任务框架）](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-14/Example.md)  
+3. [学习整理（小目标）](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-19/Example%20-%20%E5%89%AF%E6%9C%AC.md)  
+4. [变化检测](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-25/Example.md)  
