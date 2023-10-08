@@ -1,0 +1,56 @@
+import datetime
+import os
+import ee
+import geemap
+import folium
+import webbrowser
+
+# Authenticate with Earth Engine
+ee.Initialize()
+
+def export_landsat_images(collection_name, bands, region_coords, start_date, end_date, scale, output_dir):
+    # Convert region coordinates to a Geometry (a rectangle)
+    region_geom = ee.Geometry.Rectangle(region_coords)
+
+    # Select the Landsat collection
+    collection = (
+        ee.ImageCollection(collection_name)
+        .filterBounds(region_geom)  # Filter images that intersect the specified region
+        .filterDate(ee.Date(start_date), ee.Date(end_date))  # Filter images by date range
+        .filter(ee.Filter.And(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 60), ee.Filter.gt('CLOUDY_PIXEL_PERCENTAGE', 30)))
+        .select(bands)  # Select specific bands from the images
+    )
+
+    # Calculate the median of the images that meet the criteria
+    image_median = collection.median()
+
+    # Generate a timestamp for the folder name
+    current_time = datetime.datetime.now()
+    folder_name = current_time.strftime('%Y_%m_%d_%H_%M_%S_%f') + '.tif'
+
+    # Combine the folder name with the output directory to create the output path
+    output_path = os.path.join(output_dir, folder_name)
+
+    # Export the multi-band image to a TIFF file
+    geemap.ee_export_image(image_median, filename=output_path, scale=scale, region=region_geom, file_per_band=False)
+
+
+# Define region coordinates (left, top, right, bottom)
+hangzhou_coords = [120, 30, 120.1, 30.1]
+
+# Define date range
+start_date = '2020-01-01'
+end_date = '2020-07-11'
+
+# Set the export parameters
+output_dir = 'D:\\Graduate_first\\GEE_download\\'
+scale = 30  # Change this to your desired scale
+
+# set the bands
+bands = ['B4', 'B3', 'B2']
+
+# set the dataset
+collection_name = 'COPERNICUS/S2_HARMONIZED'
+
+# Call the function to export Landsat images
+export_landsat_images(collection_name, bands, hangzhou_coords, start_date, end_date, scale, output_dir)

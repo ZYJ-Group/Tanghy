@@ -1,0 +1,97 @@
+// Import required modules
+var ee = require('C:/Users/Tanghy/node_modules/@google/earthengine');
+var fs = require('fs'); // Import Node.js file system module
+var https = require('https'); // Import Node.js https module
+
+// Define a function to export an image to a local file based on specified parameters
+const exportImageToLocal = (privateKeyPath, params) => {
+  const { startDate, endDate, topLeftCoordinates, bottomRightCoordinates, datasetId, bandNames } = params;
+
+  // Authenticate using a private key and initialize Earth Engine
+  const privateKey = require(privateKeyPath);
+  ee.data.authenticateViaPrivateKey(privateKey, () => {
+    ee.initialize(null, null, () => {
+
+      // Define the region of interest
+      const region = ee.Geometry.Rectangle(topLeftCoordinates[0], topLeftCoordinates[1], bottomRightCoordinates[0], bottomRightCoordinates[1]);
+
+      // Filter images from the dataset within the specified date range
+      const collection = ee.ImageCollection(datasetId)
+        .filterDate(startDate, endDate)
+        .filterBounds(region)
+        .filter(ee.Filter.and(
+          ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 60),
+          ee.Filter.gt('CLOUDY_PIXEL_PERCENTAGE', 30)
+        ));
+
+      // Check if the image collection is empty
+      const count = collection.size().getInfo();
+      if (count === 0) {
+        console.error('No image collection found that meets the criteria.');
+        return;
+      }
+
+      // Filter images to include only specified band data
+      const filteredCollection = collection.select(bandNames);
+
+      // Check if the filtered image collection is empty
+      const filteredCount = filteredCollection.size().getInfo();
+      if (filteredCount === 0) {
+        console.error('No images found containing the specified bands.');
+        return;
+      }
+
+      // Compose the image collection into a single image
+      const image = filteredCollection.mosaic();
+
+      // Get the CRS (Coordinate Reference System) of the exported image
+      const projectionInfo = image.projection().getInfo();
+      const crs = projectionInfo.crs;
+
+      // Generate a timestamp for the download path
+      const now = new Date();
+      const timestamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}-${String(now.getHours()).padStart(2, '0')}_${String(now.getMinutes()).padStart(2, '0')}_${String(now.getSeconds()).padStart(2, '0')}`;
+
+      // Generate the download path with the timestamp as part of the filename
+      const downloadPath = `D:/Graduate_first/GEE_download/RGB_Image_${timestamp}.tif`;
+
+      // Download the image and set the size to 2048x2048 pixels
+      const imageExportOptions = {
+        name: `RGB_Image_${timestamp}`, // Update the export filename
+        crs: crs, // Use the obtained CRS
+        region: region,
+        format: 'GeoTIFF', // File format for download
+        dimensions: 2048 // Set the image size to 2048x2048 pixels
+      };
+
+      // Download the image
+      image.getDownloadURL(imageExportOptions, (url) => {
+        console.log(`Download link for the image: ${url}`); // Print the download link to the console
+
+        // Use the Node.js https module to send a request and save the response to a file
+        https.get(url, (response) => {
+          if (response.statusCode === 200) {
+            const file = fs.createWriteStream(downloadPath);
+            response.pipe(file);
+            console.log(`Image downloaded to: ${downloadPath}`);
+          } else {
+            console.error(`Error downloading the image, HTTP status code: ${response.statusCode}`);
+          }
+        });
+      });
+    });
+  });
+};
+
+// Call the function and pass frontend parameters
+const privateKeyPath = 'D:/Downloads/ChromeDownload/windy-elevator-396806-6cc8560ffb4e.json';
+const frontendParams = {
+  datasetId: 'COPERNICUS/S2_HARMONIZED',
+  topLeftCoordinates: [120, 30], // Top-left coordinates
+  bottomRightCoordinates: [120.1, 30.1], // Bottom-right coordinates
+  startDate: '2020-01-01',
+  endDate: '2020-07-11',
+  bandNames: ['B4', 'B3', 'B2'] // Specify RGB band order
+};
+
+exportImageToLocal(privateKeyPath, frontendParams);
