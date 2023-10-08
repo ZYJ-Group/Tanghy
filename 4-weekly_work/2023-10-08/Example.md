@@ -9,7 +9,9 @@ COPERNICUS/S1_GRD | 'VV', 'VH' | python | ![2023-10-08-03](https://github.com/ZY
 COPERNICUS/S2_HARMONIZED | 'B4', 'B3', 'B2' | nodejs | ![2023-10-08-02](https://github.com/ZYJ-Group/Tanghy/assets/94824386/a074b7c2-9427-4d0d-abdc-02efcde4f4b4) | 34.668
 COPERNICUS/S2_HARMONIZED | 'B4', 'B3', 'B2' | python | ![2023-10-08-04](https://github.com/ZYJ-Group/Tanghy/assets/94824386/f068f740-870a-4817-9e0f-1ed96aefaab8) | 18
 
-数据集 | 波段 | 时间 | 结果图 | 耗时
-----  | --- | --- | --- | ---
-COPERNICUS/S2_HARMONIZED | 'B4', 'B3', 'B2' | 2020.1-2020.7 | ![2023-10-08-05](https://github.com/ZYJ-Group/Tanghy/assets/94824386/c57542f7-b1f1-482d-94b6-a213552f4239) | 20.821
-COPERNICUS/S2_HARMONIZED | 'B4', 'B3', 'B2' | 2022.1-2022.7 | ![2023-10-08-02](https://github.com/ZYJ-Group/Tanghy/assets/94824386/ae82f207-cc21-4d91-82a4-bf2a8761b8ef) | 34.668
+数据集 | 集成平台 | 时间 | 结果图
+----  | --- | --- | --- 
+COPERNICUS/S2_HARMONIZED | python | 2020.1-2020.7 | ![2023-10-08-06](https://github.com/ZYJ-Group/Tanghy/assets/94824386/dab11f23-dbee-4a2a-a15d-e439bbb0e4fa)
+COPERNICUS/S2_HARMONIZED | python | 2022.1-2022.7 | ![2023-10-08-04](https://github.com/ZYJ-Group/Tanghy/assets/94824386/f068f740-870a-4817-9e0f-1ed96aefaab8) 
+COPERNICUS/S2_HARMONIZED | nodejs | 2020.1-2020.7 | ![2023-10-08-05](https://github.com/ZYJ-Group/Tanghy/assets/94824386/c57542f7-b1f1-482d-94b6-a213552f4239) 
+COPERNICUS/S2_HARMONIZED | nodejs | 2022.1-2022.7 | ![2023-10-08-02](https://github.com/ZYJ-Group/Tanghy/assets/94824386/ae82f207-cc21-4d91-82a4-bf2a8761b8ef) 
