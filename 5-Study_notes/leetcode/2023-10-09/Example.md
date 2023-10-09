@@ -69,7 +69,16 @@ for(){
 		}
 ```
 
-## 二分搜索
-![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/05d0685e-5a61-4ace-a7b6-c095343f964c)
+**5. 常见复杂度**
+O(1) O(logN) O(N) O(N*logN) O(N^2) … O(N^k) O(2^N) … O(k^N) … O(N!)  
 
+## 算法和数据结构简介  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/5b6e1a1c-3de1-4d99-9da6-ba9dc7227a90)   
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/ba0f07f1-d7a5-484c-b3c4-dba826f11114)  
+
+
+**1. 数据结构分类**    
+宏观上说，只有连接结构和跳转结构。  
+连接结构类似于数组，是在一个连续的空间内。  
+跳跃结构类似于，链表，在一个内容中，第一位数据存储该字节的值，第二位数据存储下一个字节的地址。同样的类似于二叉树，可能第一位数据记录该字节的值，第二位和第三位数据分别记录其左孩子和右孩子的地址。
 
