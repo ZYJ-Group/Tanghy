@@ -5,7 +5,32 @@
 
 ### 笔记
 **1. 两个链表相加**  
+```C++
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode* dummy = new ListNode(0);  // Dummy节点，简化代码
+        ListNode* l3 = dummy;
+        int carry = 0;
 
+        while (l1 != nullptr || l2 != nullptr || carry != 0) {
+            int sum = (l1 ? l1->val : 0) + (l2 ? l2->val : 0) + carry;
+            carry = sum / 10;
+
+            l3->next = new ListNode(sum % 10);
+            l3 = l3->next;
+
+            if (l1) l1 = l1->next;
+            if (l2) l2 = l2->next;
+        }
+
+        ListNode* result = dummy->next;
+        delete dummy;  // 释放Dummy节点
+        return result;
+    }
+};
+
+```
 
 
 ## 链表入门题目-划分链表
