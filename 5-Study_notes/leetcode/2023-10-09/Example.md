@@ -1,162 +1,89 @@
 # leetcode
-## 单双链表及其反转-堆栈诠释
-![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/da60afd8-1179-4206-a254-4f104ad8db09)  
-
-
-
+## 时间复杂度和空间复杂度
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/1ee46368-5159-4b77-8244-5f185aba2869)  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/cd46f995-04bd-4679-acff-48b1841c247c)  
 ### 笔记  
-**1. 按值传递、按引用传递**  
-```java
-	// int、long、byte、short
-	// char、float、double、boolean
-	// 还有String
-	// 都是按值传递
-	int a = 10;
-	f(a);
-	System.out.println(a);
 
-	public static void f(int a) {
-		a = 0;
-	}
-//在这个代码里面，f(a)在调用的过程中，实际上是创建了一个新的a',a'的值等于a，所以修改a'的值并不会改变a的值。
+**1. 常数操作**  
+位运算，算术运算，寻址运算，哈希。  
+
+**2. 时间复杂度**  
+例：选择排序。  
+
+遍历 | 次数 | 作用
+--- | --- | ---
+0 - N-1 | N | 把min放到[0]
+1 - N-1 | N-1 | 把min放到[1]
+2 - N-1 | N-2 | 把min放到[2]
+3 - N-1 | N-3 | 把min放到[3]  
+
+总和（等差数列）：[N + (N-1) + …… + 2 + 1 = n/2*(2*a1+(n-1)*d) = an^2 + bn + c ---- O(n^2)  
+同理，冒泡排序，插入排序都是O(n^2)时间复杂度。  
+但是，在严格固定流程的算法，一定强调最差情况！比如插入排序。 
+
+**3. 空间复杂度**  
+需要注意的是，动态数组的空间复杂度在进行动态扩展时可能存在摊销的情况。当数组需要扩展时，可能会分配新的内存空间，并将原来的元素复制到新的内存空间中。这个操作的时间复杂度是O(n)，但由于不是每次都需要扩展，而是摊销到多次插入操作中，因此平均情况下每次插入的空间复杂度仍然是O(1)。
+什么叫最优解，先满足时间复杂度最优，然后尽量少用空间的解。  
+
+**4. 判断时间复杂度**
+- 不要用代码结构来判断时间复杂度。  
+``` C++
+// 例：
+for(){
+  for(){
+    }
+  }
+// 并不表示这个的时间复杂度就为O(n^2)
 ```
-
 ```java
-// 其他类型按引用传递
-// 比如下面的Number是自定义的类
-	Number b = new Number(5);
-	g1(b);
-	System.out.println(b.val);
-	g2(b);
-	System.out.println(b.val);
-
-	// 比如下面的一维数组
-	int[] c = { 1, 2, 3, 4 };
-	g3(c);
-	System.out.println(c[0]);
-	g4(c);
-	System.out.println(c[0]);
-
-
-	public static class Number {
-		public int val;
-
-		public Number(int v) {
-			val = v;
+	// 只用一个循环完成冒泡排序
+	// 但这是时间复杂度O(N^2)的！
+	public static void bubbleSort(int[] arr) {
+		if (arr == null || arr.length < 2) {
+			return;
+		}
+		int n = arr.length;
+		int end = n - 1, i = 0;
+		while (end > 0) {
+			if (arr[i] > arr[i + 1]) {
+				swap(arr, i, i + 1);
+			}
+			if (i < end - 1) {
+				i++;
+			} else {
+				end--;
+				i = 0;
+			}
 		}
 	}
-
-	public static void g1(Number b) {
-		b = null;
-	}
-
-	public static void g2(Number b) {
-		b.val = 6;
-	}
-
-	public static void g3(int[] c) {
-		c = null;
-	}
-
-	public static void g4(int[] c) {
-		c[0] = 100;
-	}
-//在这个代码中，当g(b)调用b的时候，实际上也是创建了一个新的b'，但是b'和b指向同一个内存的值，所以当b'设置为null的时候，对b不会有影响，但是如果b'.val进行了修改，实际上是修改了同时指向的内存的值，所以b对应的值也会发生变化。
-```
-**2. 单链表、双链表的定义**  
-![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/c6700cbe-da93-498d-9524-ca01c879d2b4)  
-![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/45ce8140-9173-4190-8f27-d890cb1eb775)  
-```c++
-// 单链表
-Node{
-	int val;
-	Node next;
-}
-```
-```c++
-// 双链表
-Node{
-	int val;
-	Node next;
-	Node last;
-}
-```
-**3. 链表反转**  
-```C++
-//单链表反转
-//https://leetcode.cn/problems/reverse-linked-list/solutions/
-class Solution {
-public:
-    ListNode* reverseList(ListNode* head){
-    ListNode* pre = nullptr;
-    ListNode* cur = head;
-    while(cur) {
-        ListNode* next = cur->next;
-        cur->next = pre;
-        pre = cur;
-        cur = next;
-    }
-    return pre;
-    }
-};
-```
-```C++
-//双链表反转
-class Solution {
-public:
-    ListNode* reverseDoubleList(ListNode* head){
-    ListNode* pre = nullptr;
-    ListNode* cur = head;
-    while(cur) {
-        ListNode* next = cur->next;
-        cur->next = pre;
-        cur->last = next;
-        pre = cur;
-        cur = next;
-    }
-    return pre;
-    }
-};
-```
-## 链表入门题目-合并两个有序链表  
-![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/f4c86c2b-587f-49a5-8017-37d54d3bd41c)  
-
-**1. 合并两个有序链表**    
-```C++
-//https://leetcode.cn/problems/merge-two-sorted-lists/
-class Solution {
-public:
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        if (list1 == nullptr) {
-            return list2;
-        } else if (list2 == nullptr) {
-            return list1;
-        }
-
-        ListNode* list3 = new ListNode(0);
-        ListNode* cur1 = list1;
-        ListNode* cur2 = list2;
-        ListNode* cur3 = list3;
-
-        while (cur1 && cur2) {
-            if (cur1->val <= cur2->val) {
-                cur3->next = cur1;
-                cur1 = cur1->next;
-            } else {
-                cur3->next = cur2;
-                cur2 = cur2->next;
-            }
-            cur3 = cur3->next;
-        }
-
-        if (cur1) {
-            cur3->next = cur1;
-        }
-        if (cur2) {
-            cur3->next = cur2;
-        }
-    return list3->next;
-    }
-};
 ```
 
+```java
+//N/1 + N/2 + N/3 + … + N/N，这个流程的时间复杂度是O(N * logN)，著名的调和级数
+		for (int i = 1; i <= N; i++) {
+			for (int j = i; j <= N; j += i) {
+				// 这两个嵌套for循环的流程，时间复杂度为O(N * logN)
+				// 1/1 + 1/2 + 1/3 + 1/4 + 1/5 + ... + 1/n，也叫"调和级数"，收敛于O(logN)
+				// 所以如果一个流程的表达式 : n/1 + n/2 + n/3 + ... + n/n
+				// 那么这个流程时间复杂度O(N * logN)
+			}
+		}
+```
+
+**5. 常见复杂度**  
+O(1) O(logN) O(N) O(N*logN) O(N^2) … O(N^k) O(2^N) … O(k^N) … O(N!)  
+
+
+## 二分搜索
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/05d0685e-5a61-4ace-a7b6-c095343f964c)
+
+
+## 算法和数据结构简介  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/5b6e1a1c-3de1-4d99-9da6-ba9dc7227a90)   
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/ba0f07f1-d7a5-484c-b3c4-dba826f11114)  
+
+
+**1. 数据结构分类**    
+宏观上说，只有连接结构和跳转结构。  
+连接结构类似于数组，是在一个连续的空间内。  
+跳跃结构类似于，链表，在一个内容中，第一位数据存储该字节的值，第二位数据存储下一个字节的地址。同样的类似于二叉树，可能第一位数据记录该字节的值，第二位和第三位数据分别记录其左孩子和右孩子的地址。
