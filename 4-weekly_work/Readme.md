@@ -60,5 +60,17 @@
 ## 2023-09-25
 [Change Detection](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-25/Example.md)  
 
-## 2023-09-26
-[UNet复现](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-09-26/Example.md)  
+## 2023-10-08
+[GEE本地化](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-10-08/Example.md)  
+
+## 2023-10-12
+[星载SAR传感器介绍](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-10-12/Example.md)  
+
+## 2023-10-13
+[SAM && SVM](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-10-13/Example.md)  
+
+## 2023-10-14
+[星载SAR传感器介绍](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-10-14/Example.md)  
+
+## 2023-10-15
+[基于SAM的遥感开发](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-10-15/Example.md)  
