@@ -43,6 +43,7 @@ $\[ \text{输出尺寸} = \frac{\text{输入尺寸} - \text{卷积核尺寸} + 2
 4. **激活函数**
 在卷积层中，通常会应用非线性激活函数，如ReLU。
 
+参考：[链接](https://blog.csdn.net/CP18281638639/article/details/117418615?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522169831018116800213012706%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=169831018116800213012706&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-117418615-null-null.142^v96^control&utm_term=%E5%8D%B7%E7%A7%AF%E5%B1%82&spm=1018.2226.3001.4187)
 ## 图像卷积运算如下图所示：
 ![2023-10-26-01](https://github.com/ZYJ-Group/Tanghy/assets/94824386/6bc04f15-ddd3-420e-a3c4-9754c84ecba8)  
 
@@ -53,4 +54,7 @@ $\[ \text{输出尺寸} = \frac{\text{输入尺寸} - \text{卷积核尺寸} + 2
 ![2023-10-26-03](https://github.com/ZYJ-Group/Tanghy/assets/94824386/e6c4cff0-6433-4776-b28b-58b0a065033e)  
 
 
-# 
+# Attention
+
+
+
