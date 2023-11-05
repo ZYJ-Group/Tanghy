@@ -1,48 +1,70 @@
-# 2018-2021年中国新疆10米棉花地图
+# BIT Reproduction
 
-## 链接
-- 论文：[链接](https://www.nature.com/articles/s41597-023-02584-3)
-- 数据集：[链接](https://doi.org/10.5281/zenodo.7856467)
+## Reference Link
+[github repos](https://github.com/justchenhao/BIT_CD)  
+[csdn](https://blog.csdn.net/persist_ence/article/details/129687895?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522169917089616777224410813%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=169917089616777224410813&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-129687895-null-null.142^v96^control&utm_term=BIT%E5%A4%8D%E7%8E%B0&spm=1018.2226.3001.4187)  
 
-## 概要
-通过监督分类，制作了中国最大的棉花产区新疆（XJ_COTTON10）2018年至2021年的棉花地图（10m）。采用先农田制图后棉花采摘的两步制图策略，提高了约166万平方公里、异质性较高的大面积棉花制图的准确性和效率。此外，与光谱、纹理、结构和物候特征相关的时间序列卫星数据被组合并用于监督随机森林分类器。棉/非棉分类模型在同年和相邻年份的测试样本上分别实现了约 95% 和 90% 的总体准确率。事实证明，所提出的两步棉花制图策略在制作多年一致的棉花地图方面是有前景和有效的。XJ_COTTON10 与县级棉花统计面积吻合较好（R2=0.84~0.94）。这是首次全疆10米分辨率棉花测绘，可为我国高精度棉花监测和政策制定提供依据。
+## Quick Start
+``` python
+python demo.py
+```
+We can find the prediction results in `samples/predict`.
 
-## 方法
+## Data Preparation
+### Data Download 
+LEVIR-CD: [link](https://justchenhao.github.io/LEVIR/  )  
+WHU-CD: [link](https://study.rsgis.whu.edu.cn/pages/download/building_dataset.html  )  
+DSIFN-CD: [link](https://github.com/GeoZcx/A-deeply-supervised-image-fusion-network-for-change-detection-in-remote-sensing-images/tree/master/dataset  )  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/b8f0653b-b4d2-4cc4-8415-6ecfcf3396bb)    
 
-### 研究区域描述
+### Data structure
+```
+"""
+Change detection data set with pixel-level binary labels；
+├─A
+├─B
+├─label
+└─list
+"""
+```
+`A`: images of t1 phase;  
+`B`:images of t2 phase;  
+`label`: label maps;  
+`list`: contains `train.txt, val.txt and test.txt`, each file records the image names (XXX.png) in the change detection dataset.  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/a632a9f8-ec4a-4e34-aa75-a8f7df4a570a)
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/b36a7bf4-ece8-48e7-90fb-b5180dece9f3)  
 
-- **位置：** 位于中国西北的新疆。
-- **地理范围：** 大约占地1.66百万平方公里。
-- **地形：** 以两个盆地（准噶尔盆地和塔里木盆地）夹在三座山脉（阿尔泰山、天山和昆仑山）之间为特征。
-- **划分：** 北疆（NX）、南疆（SX）和东疆（EX）。
-- **主要作物：** 小麦、玉米和棉花，其中棉花是近五年来最大的作物。
+To create the list, I utilized Python. The Python file is located at the provided link.
+link
 
-### 数据集
+## Train
+### `main_cd.py`
+The file for training is `main_cd.py`, ang we need to modify certain parameters for the training process. Here are some key parameters.
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/daeae00c-4571-43fa-a100-b98138a69033)    
+`project_name`: it will generate a file in the root of checkpoint_root, containing the relative log file for each training session.(need to change for each projection)  
+`checkpoint_root`: it will generate a file int the root of this directory.  
+`dataset` and `data_name` : These represent the name of the datasets, which we don't alter here.  
 
-- **野外采样：** 分别在2020年和2021年在主要的棉花种植区域进行。
-- **定位点：** 对作物（包括棉花、小麦、玉米）和非作物区域（开发土地、水域、森林、草地、沙漠、山地等）进行采集。
-- **样本扩充：** 利用Google Earth平台上的高分辨率影像进行视觉解释，扩充并均匀分布训练数据。
-- **样本数量：**
-  - 2020年：10,418个样本（非棉花作物2,627个样本，非作物7,791个样本）
-  - 2021年：5,422个样本（非棉花作物1,147个样本，非作物4,275个样本）
+### `data_config.py`
+We need to make modifications in the 'data_config.py' file. Here, we only need to change the 'root_dir' to the path of our own dataset.
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/5d5b5bca-95f6-446e-81e5-cacaa1e79271)  
 
-### 表面反射
+### `dateset`
+We will encounter an error when running this code in our server, and the error is found in this code:
+'from Dataset.CD_dataset import CDDataset'.
+**Solution:**
+Since `Dataset` has the same name as a library, we will change the file name.
 
-- **影像：** 使用Sentinel系列（Sentinel 2 A/B, S2用于光学，Sentinel 1, S1用于雷达），空间分辨率为10米，覆盖2018年至2021年的新疆地区。
-- **反射影像：** GEE平台提供2019年至2021年的S2底层大气反射影像和2018年至2021年的表层大气反射影像。
-- **预处理：** 使用2018年的TOA影像进行棉花分类，基于You等人的方法。
-- **云去除：** 包括使用GEE提供的云概率数据集获取干净像素，基于干净像素生成月度综合表面反射（SR）值，以及使用Savitzky-Golay滤波器平滑时间序列数据。
+### ModuleNotFoundError
+We encounter another error as ModuleNotFoundError: No module named ‘torchvision.models.utils.
+Due to our Torch version being higher(above 1.6), errors are occurring. The error statements need to be modified.
+**Solution:**
+Modified `from torchvision.models.utils import load_state_dict_from_url` to `from torch.hub import load_state_dict_from_url`
 
+### `run_cd.sh`
+We can find the training script run_cd.sh in the folder scripts. We can run the script file by sh scripts/run_cd.sh in the command environment.
 
-
-## 数据记录
-XJ_COTTON10数据集64  （2018年至2021年新疆10米棉花地图）已向公众开放：[链接](https://doi.org/10.5281/zenodo.7856467)。包括以下7个压缩包，每包30个大小为3°×3°的geofles：
-1. Cotton_2018_TOA_10m_flter.zip：通过TOA+方法绘制的2018年10m棉花地图；
-2. Cotton_2019_BOA_10m_flter.zip：通过BOA+方法绘制的2019年10m棉花地图；
-3. Cotton_2019_TOA_10m_flter.zip：通过TOA+方法绘制的2019年10m棉花地图；
-4. Cotton_2020_BOA_10m_flter.zip：通过BOA+方法绘制的2020年10m棉花地图；
-5. Cotton_2020_TOA_10m_flter.zip：通过TOA+方法绘制的2020年10m棉花地图；
-6. Cotton_2021_BOA_10m_flter.zip：通过BOA+方法绘制的2021年10m棉花地图；
-7. Cotton_2021_TOA_10m_flter.zip：通过  TOA+  方法绘制的  2021  年  10m  棉花地图。
-
-所有七张地图的地理参考  (ESPG:  4326  (WGS_1984))  都是相同的，与  geotif  文件中的一致。  7张地图的Te值均包含1和0，分别代表棉花和其他土地（包括其他农作物和非农田）。
+## Pretection
+We utilize the `demo.py` for predictions. Please note that it's crucial to input the same `checkpoint_root` and `projection_name` as used in the `train.py`.
+For the `dataset` and `data_name`, we keep them unchanged.
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/991c2340-717d-48da-b0bd-32e4230e8d23)  
