@@ -25,3 +25,15 @@
 
 ## 2023-10-15
 [基于SAM的遥感开发](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-10-15/Example.md)  
+
+## 2023-10-20
+[洪水地图马拉松国际大赛](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-10-20/Example.md)  
+
+## 2023-10-22
+[2018-2021年中国新疆10米棉花地图](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-10-22/Example.md)  
+
+## 2023-11-03
+[BIT Reproduction](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-11-03/Example.md)  
+
+## 2023-11-05
+[BIT Reproduction](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-11-05/Example.md)  
