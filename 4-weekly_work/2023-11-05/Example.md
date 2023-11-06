@@ -1,70 +1,37 @@
 # BIT Reproduction
 
-## Reference Link
-[github repos](https://github.com/justchenhao/BIT_CD)  
-[csdn](https://blog.csdn.net/persist_ence/article/details/129687895?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522169917089616777224410813%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=169917089616777224410813&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-129687895-null-null.142^v96^control&utm_term=BIT%E5%A4%8D%E7%8E%B0&spm=1018.2226.3001.4187)  
+# 模型评估指标：精度、召回率和F1分数
 
-## Quick Start
-``` python
-python demo.py
-```
-We can find the prediction results in `samples/predict`.
+## 精度（Precision）
 
-## Data Preparation
-### Data Download 
-LEVIR-CD: [link](https://justchenhao.github.io/LEVIR/  )  
-WHU-CD: [link](https://study.rsgis.whu.edu.cn/pages/download/building_dataset.html  )  
-DSIFN-CD: [link](https://github.com/GeoZcx/A-deeply-supervised-image-fusion-network-for-change-detection-in-remote-sensing-images/tree/master/dataset  )  
-![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/b8f0653b-b4d2-4cc4-8415-6ecfcf3396bb)    
+精度是指在所有被模型预测为正类别的样本中，实际上是正类别的比例。精度可以用以下公式表示：
 
-### Data structure
-```
-"""
-Change detection data set with pixel-level binary labels；
-├─A
-├─B
-├─label
-└─list
-"""
-```
-`A`: images of t1 phase;  
-`B`:images of t2 phase;  
-`label`: label maps;  
-`list`: contains `train.txt, val.txt and test.txt`, each file records the image names (XXX.png) in the change detection dataset.  
-![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/a632a9f8-ec4a-4e34-aa75-a8f7df4a570a)
-![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/b36a7bf4-ece8-48e7-90fb-b5180dece9f3)  
+$\text{Precision} = \frac{\text{True Positives}}{\text{True Positives + False Positives}}\$
 
-To create the list, I utilized Python. The Python file is located at the provided link.
-link
+精度衡量了模型在预测为正类别的样本中的准确性。
 
-## Train
-### `main_cd.py`
-The file for training is `main_cd.py`, ang we need to modify certain parameters for the training process. Here are some key parameters.
-![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/daeae00c-4571-43fa-a100-b98138a69033)    
-`project_name`: it will generate a file in the root of checkpoint_root, containing the relative log file for each training session.(need to change for each projection)  
-`checkpoint_root`: it will generate a file int the root of this directory.  
-`dataset` and `data_name` : These represent the name of the datasets, which we don't alter here.  
+## 召回率（Recall）
 
-### `data_config.py`
-We need to make modifications in the 'data_config.py' file. Here, we only need to change the 'root_dir' to the path of our own dataset.
-![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/5d5b5bca-95f6-446e-81e5-cacaa1e79271)  
+召回率是指在所有实际正类别的样本中，被模型正确预测为正类别的比例。召回率可以用以下公式表示：
 
-### `dateset`
-We will encounter an error when running this code in our server, and the error is found in this code:
-'from Dataset.CD_dataset import CDDataset'.
-**Solution:**
-Since `Dataset` has the same name as a library, we will change the file name.
+$\text{Recall} = \frac{\text{True Positives}}{\text{True Positives + False Negatives}}$
 
-### ModuleNotFoundError
-We encounter another error as ModuleNotFoundError: No module named ‘torchvision.models.utils.
-Due to our Torch version being higher(above 1.6), errors are occurring. The error statements need to be modified.
-**Solution:**
-Modified `from torchvision.models.utils import load_state_dict_from_url` to `from torch.hub import load_state_dict_from_url`
+召回率衡量了模型对正类别样本的覆盖程度。
 
-### `run_cd.sh`
-We can find the training script run_cd.sh in the folder scripts. We can run the script file by sh scripts/run_cd.sh in the command environment.
+## F1分数（F1 Score）
 
-## Pretection
-We utilize the `demo.py` for predictions. Please note that it's crucial to input the same `checkpoint_root` and `projection_name` as used in the `train.py`.
-For the `dataset` and `data_name`, we keep them unchanged.
-![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/991c2340-717d-48da-b0bd-32e4230e8d23)  
+F1分数是精度和召回率的调和平均数，可以通过以下公式计算：
+
+$F1 = \frac{2 \times \text{Precision} \times \text{Recall}}{\text{Precision + Recall}}$
+
+F1分数综合考虑了模型的准确性和覆盖性。它特别适用于处理不平衡类别的情况，其中正类别和负类别的样本数量差异较大。
+
+这些指标通常用于评估二分类模型的性能，但也可以扩展到多分类问题。在评估模型性能时，了解这些指标有助于全面了解模型在不同方面的表现。
+
+# 实验结果
+| 数据集 (Dataset) | running_mf1 | Accuracy (acc) | Mean IoU (miou) | Mean F1 (mf1) | IoU Class 0 | IoU Class 1 | F1 Class 0 | F1 Class 1 | Precision Class 0 | Precision Class 1 | Recall Class 0 | Recall Class 1 |
+|-----------------|--------------|-----------------|-----------------|--------------|--------------|--------------|-------------|-------------------|-------------------|-----------------|-----------------| ----------
+| CDD             | 0.57380      | 0.94999         | 0.48876         | 0.51402      | 0.94991      | 0.02760      | 0.97431      | 0.05372     | 0.95037           | 0.74612           | 0.99949         | 0.02786         |
+| DSIFN           | 0.49727      | 0.98781         | 0.49465         | 0.49842      | 0.98781      | 0.00149      | 0.99387      | 0.00298     | 0.98791           | 0.15170           | 0.99990         | 0.00151         |
+| S2Looking       | 0.72377      | 0.98786         | 0.59416         | 0.66394      | 0.98783      | 0.20049      | 0.99388      | 0.33401     | 0.99088           | 0.49728           | 0.99689         | 0.25145         |
+
