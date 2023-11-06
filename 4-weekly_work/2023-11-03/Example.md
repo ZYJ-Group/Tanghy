@@ -68,3 +68,16 @@ We can find the training script run_cd.sh in the folder scripts. We can run the 
 We utilize the `demo.py` for predictions. Please note that it's crucial to input the same `checkpoint_root` and `projection_name` as used in the `train.py`.
 For the `dataset` and `data_name`, we keep them unchanged.
 ![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/991c2340-717d-48da-b0bd-32e4230e8d23)  
+
+## RuntimeError
+RuntimeError: Error(s) in loading state_dict for BASE_Transformer**  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/ef7e31da-9774-4a81-aab6-cf4fb8f95a02)    
+Due to the disparity between the model utilized for prediction and the one employed during training:  
+This is the model we utilized for prediction.  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/916b61d2-5060-4b14-8e0c-02e659216da4)  
+
+This is the model we utilized for training.  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/89bdaeae-91af-4d66-8b67-f4c0e3fa3a24)  
+
+Therefore, adjustments are necessary to align them and ensure consistency.
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/9bc9706c-b051-4f4b-b587-ba06eff194df)  
