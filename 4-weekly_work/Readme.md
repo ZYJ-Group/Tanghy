@@ -37,3 +37,12 @@
 
 ## 2023-11-05
 [BIT Reproduction](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-11-05/Example.md)  
+
+## 2023-11-10
+[PaddleDetection](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-11-05/Example.md)  
+
+## 2023-11-11
+[PaddleDetection](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-11-05/Example.md)  
+
+## 2023-11-12
+[MMDetection](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-11-05/Example.md)  
