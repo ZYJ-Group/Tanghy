@@ -40,7 +40,7 @@ mmcv_maximum_version = '2.1.1'
 ```
 从而使用前面自动安装的mmcv==2.1.0版本
 
-### 修改数据集位置
+### 修改数据集路径
 例：
 ```
 python tools/train.py configs/changer/changer_ex_r18_512x512_40k_levircd.py --work-dir ./changer_r18_levir_workdir
