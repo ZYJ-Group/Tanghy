@@ -1,4 +1,4 @@
-# PaddleDetection
+# MMDetection
 [链接](https://github.com/open-mmlab/mmdetection)
 
 ## 安装
