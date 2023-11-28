@@ -46,3 +46,18 @@
 
 ## 2023-11-12
 [MMDetection](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-11-12/Example.md)  
+
+## 2023-11-19
+[MNIST](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-11-19/Example.md)  
+
+## 2023-11-24
+[Cloud Removal](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-11-24/Example.md)  
+
+## 2023-11-25
+[open-cd](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-11-25/Example.md)  
+
+## 2023-11-27
+[open-cd](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-11-27/Example.md)  
+
+## 2023-11-28
+[open-cd](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-11-28/Example.md)  
