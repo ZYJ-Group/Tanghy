@@ -1,85 +1,77 @@
-# 去云文献阅读-1/3（大方向/篇数）
-# Cloud Removal for Remote Sensing Imagery vai Spatial Attention Generative Adversarial Network（标题/关键词）
-- Pan Heng（作者）
-- 链接：[paper](https://arxiv.org/abs/2009.13015)
-- 阅读时间：2023/12/04
+# 去云文献阅读-2/3（大方向/篇数）
+# UnCRtainTS: Uncertainty Quantification for Cloud Removal in Optical Satellite Time Series（标题/关键词）
+- Patrick Ebel， Vivien Sainte Fare Garnot，Michael Schmitt（作者）
+- 链接：[paper](http://arxiv.org/abs/2304.05464)
+- 阅读时间：2023/12/11
 
-## 简介
-光学遥感图像由于其高分辨率和稳定的几何特性，在许多领域得到了广泛的应用。然而，遥感影像不可避免地受到气候的影响，尤其是云的影响。去除高分辨率遥感卫星影像中的云是对其进行分析前必不可少的预处理步骤。出于大规模训练数据的考虑，神经网络在许多图像处理任务中取得了成功，但利用神经网络去除遥感影像中云的研究还比较少。我们采用生成对抗网络来解决这一任务，并将空间注意力机制引入到遥感图像去云任务中，提出了一种名为空间注意力生成对抗网络( SpA GAN )的模型，该模型模仿人类视觉机制，通过局部到全局的空间注意力对云区域进行识别和聚焦，从而增强这些区域的信息恢复，生成质量更好的无云图像。在与现有去云模型(条件GAN ,循环GAN)在开源RICE数据集上的对比实验中，SpA GAN在峰值信噪比( PSNR )和结构相似度( SSIM )两个指标上都取得了最好的性能。证明了空间注意力机制对于提高去云图像质量的有效性以及模型在去云任务上的优越性能。Sp GAN的代码为https://github.com/Penn000/SpAGAN_for_cloud_removal.
+## 简介  
+云层和雾霾经常遮挡光学卫星图像，阻碍对地球表面进行连续、密集的监测。虽然现代深度学习方法可以隐式地学习忽略这种遮挡，但作为预处理的显式云去除可以实现人工解释，并允许在只有少量注释可用的情况下训练模型。由于遮挡场景范围广泛- -从部分透过雾霾可见的场景，到完全不透明的云层覆盖，云层去除具有挑战性。此外，在下游应用中集成重建图像将极大地受益于可靠的质量评估。在本文中，我们介绍了UnCRtainTS，一种结合新型注意力机制的多时相去云方法，以及一种用于多变量不确定性预测的公式。这两个组件结合在两个公共的云去除数据集上的图像重建方面设置了新的最先进的性能。此外，我们展示了如何通过良好校准的预测不确定性来实现对重建质量的精确控制。  
 
-## 关键词
-高分辨率遥感影像、云去除、生成对抗网络、空间注意力。
+## 实验方法  
+我们遵循公共云去除基准SEN12MS - CR - TS 的问题声明。每个N大小的数据集样本 i由一对( Xi , Y i)组成，其中Xi = [ Xi 1 , · · · , Xi T]为包含有云像素的大小为[ T × Cin × H × W]的输入时间序列，Yi为形状为[ K × H × W]的目标无云图像。T表示输入序列中的日期数，Cin和K表示输入和输出通道数，H × W表示图像的两个空间维度。我们取T = 3，Cin = 15，K = 13，H = W = 256 .注意到Cin ̸ = K，因为Sentinel - 1雷达观测被用作额外的输入。此外，即兴不确定性量化引入了额外的输出通道来描述建模的噪声分布。为了方便起见，我们在本节的其余部分去掉了i上标。  
 
-## 实验方法
-**Generator--SPANet（空间注意力网络）**  
-    ![SPANet](https://github.com/ZYJ-Group/Tanghy/assets/94824386/f283d62d-ef30-4aed-822e-3096e15de0d9)  
-    Sp A Gan的生成器( a )。它采用3个标准残差块提取特征，4个空间注意块( SAB ) ( b )分4个阶段逐步识别云，2个残差块重建干净的背景。一个SAB包含3个空间注意力残差块( SARBs ) ( c )和1个空间注意力模块( SAM ) ( d )。  
+![architecture (1)](https://github.com/ZYJ-Group/Tanghy/assets/94824386/95c3d163-81b3-4623-be51-9c47bd4fb5cb)  
 
-**Discriminator--普通的卷积神经网络**  
-     ![dis](https://github.com/ZYJ-Group/Tanghy/assets/94824386/704d982d-2899-4809-868e-c3d71ac0b93c)  
 
-**Loss**  
-1. SpA GAN的总损失为：  
-    ![loss_spagan](https://github.com/ZYJ-Group/Tanghy/assets/94824386/33cbd7aa-478e-4c9b-96ca-d4b802d9638a)  
-2. 条件GAN的损失函数：  
-    ![loss_cgan](https://github.com/ZYJ-Group/Tanghy/assets/94824386/ac090c36-a539-4e46-b022-9ce4f925382d)  
-3. 标准l1损失函数：  
-    ![loss_l1](https://github.com/ZYJ-Group/Tanghy/assets/94824386/f33b1faa-7eda-4198-839d-95694341ea84)  
-4. 注意力损失函数：  
-    ![loss_att](https://github.com/ZYJ-Group/Tanghy/assets/94824386/f064c4f0-2b6f-4b16-9f6b-60d7897316c8)  
+### 网络架构  
+我们提出的Un CRtainTS网络架构将一个有云的输入时间序列映射到一个无云的单幅光学图像。如Sec . 2 . 1，我们明确选择只在全分辨率特征图上进行空间编码，以便在使用基于像素的损失进行训练时具有良好的性能。为了缓解这种选择对架构计算负载的影响，我们依赖于高效的MBConv块。它们将深度卷积和正则逐点卷积相结合，以实现计算高效的空间编码。我们通过基于注意力的L-TAE对下采样的特征图进行时间编码，它是为卫星图像时间序列设计的，在计算上比Transformer更有效。  
 
-## 实验  
-**数据集**  
-    Remote sensing Image Cloud rEmoving (RICE)，RICE数据集由RICE1和RICE2两个子集合组成，可在[链接](https://github.com/BUPTLdy/RICE_DATASET)上获取。  
+**预聚集共享编码器**  
+T幅不同的输入图像由一个共享的空间编码分支并行处理。该编码器由一个逐点卷积Cin→dm组成，后跟一个可指定数量的MBConv块ne。根据文献，我们用编码分支中的归一化。所有MBConv块映射到dm→2 × dm→dm通道，并包含Squeeze Excite层。最终，每个输入图像Xt被映射到相同分辨率的特征图ft上。  
 
-**评估指标**  
-1. PSNR  
-    峰值信噪比( PSNR )是评价图像质量最广泛、最常用的客观指标，其计算公式为：  
-    ![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/1c5ac4de-45fd-4296-b3a5-f99298a7e6ae)  
-    其中n是像素值的位数，对于灰度图像，n为8。MSE是图像X和Y之间的均方误差，计算为：
-    ![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/742dfdee-49cc-4d86-bf26-3cc292398ae0)  
-    PSNR值一般在20 ~ 40之间，其值越大，表示预测图像与真实图像的距离越近，预测质量越好。  
+**基于注意力的时间聚合**  
+根据最近的文献，我们使用自注意力机制将一系列特征图[ f1 , · · · , fT]聚合成一个单独的特征图。首先对大小为dm × H × W的低分辨率特征图ft进行单次maxpooling操作下采样特征ft。我们设置H = W = 32，以限制计算量，同时提供足够的分辨率来分组多云像素，这些像素通常在空间上聚集。我们通过线性层dm→2 × dm对降采样后的特征进行重投影。接下来，低分辨率特征ft使用L - TAE 进行逐像素处理：我们在低分辨率特征图的每个像素位置的T观测上获得注意力掩膜。与之前的工作不同，我们只使用了L - TAE的注意力掩码，而忽略了对低分辨率特征图序列的注意力加权。我们通过双线性插值将注意力掩模上采样到全分辨率，并将其应用到高分辨率特征图[ f1 , · · · , fT]的序列中。这样就形成了单一的特征图( f的形状为[ dm × H × W]。我们在上采样后的注意力掩码上使用0.1的丢弃率，并使用L - TAE的通道分组策略进行时间聚合。  
 
-2. SSIM
-    SSIM是一种通过亮度、对比度、结构三个方面来衡量两幅图像相似性的评价方法，其公式分别为：
-    ![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/1db07b68-4eab-492e-8ef3-47ec30e93dbf)  
-    在这里，C1，C2，C3为避免除零误差而取常数，μ σ为图像的均值和方差，XY σ为图像X和Y的协方差。因此，SSIM的公式为：  
-    ![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/d94a2a83-8eca-4d3d-b2ac-3c7000ae16de)  
-    SSIM的取值范围在0 ~ 1之间，取值越大表示两幅图像越相似。如果取值为1，则两幅图像完全相同。  
+**后集聚解码**  
+时间聚合的特征图( f )由解码分支处理，该分支由特定数量的批标准化MBConv块和最后的dm→Cout逐点卷积以及非线性组成。对于每个通道的预测图像重建，我们使用Sigmoid函数将输出压缩到数据的有效范围内。对于预测即兴不确定性(见下节)的通道，我们使用softplus激活来保证正性。  
 
-**实验设置**  
-对于RICE数据集，在RICE1中选择400张图像进行训练，100张图像进行测试，在RICE2中选择588张图像进行训练，148张图像进行测试，训练模型时设置学习率为0.0004，小批量数据为1，epoch为200。
+
+### 即兴不确定性预测  
+在这里，我们解释了我们的Un CRtainTS方法如何为每个重建像素预测一个即兴的不确定性值。由于Un CRtainTS是使用逐像素损失进行训练的，因此我们接下来采用基于像素的记法。我们考虑数据集中包含的基数为n的像素的集合。我们用( yj表示每个像素的重建，用yj表示相应的真值，这两个向量的维数均为K。  
+
+**图像重建**  
+在卫星图像重建的默认设置中，网络仅对目标像素值进行回归。因此，在这种情况下，Cout = K，预测通常用L2损失进行监督：  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/ea1d0b2d-d865-4b5c-a1bd-da62a40f84f5)    
+
+
+**多变量负对数似然损失**
+预测即兴不确定度时，假设噪声分布服从参数似然函数。然后，我们使用负的对数似然比( NLL )成本函数[ 6 ]来优化观测数据的似然作为输入和分布参数的函数。根据文献[ 39 ]，我们用以预测值( yj )为中心的K变量正态分布和正定的协方差矩阵对重建像素上的即兴不确定性进行建模  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/ac363d39-6d88-497f-99a6-b731cd27d059)  
+用∥.∥M表示马氏距离，定义为：  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/baa086d0-748e-4868-ae84-f120b7789002)  
+随后，负对数似然损失写为：  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/e4308d05-9347-4848-8c9a-81cab348d4e8)  
+
+**对角协方差矩阵**  
+我们定义∑为对角元素为σ 2 = ( σ2 1 , · · · , σ2 K)的对角矩阵.这大大简化了方程中的求逆和行列式计算。对角线模型允许每个通道有不同的方差预测，我们通过实验发现以有所裨益。然而，在这个假设下，即兴预测中的跨渠道相互作用并没有被捕捉到，这样的模型留待进一步研究。为了预测方差，我们将Cout设置为2 × K = 26。Σ的对角项作为对应输出通道的即兴不确定度预测：
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/ac06b304-ceec-4f44-9008-74bf257b66d6)   
+
+## 实验细节
+**结构**  
+我们在其默认设置中用ne = 1的预聚合块和nd = 5的后聚合块MBConv来训练所提出的UnCRtainTS。输入卷积映射到dm = 128个通道，使得MBConv块在其Squeeze - Excite层中映射到默认扩展因子为0.25的128→256→128个通道。L - TAE的参数保持为其默认值nhead = 16，密钥维度dk = 4。对于单时相孔西代拉函数，我们使用相同的架构，并简单地丢弃了不必要的基于L - TAE的聚合。架构与已经在SEN12MS - CR和SEN12MS - CR - TS数据集上评估的基线进行了比较。还评估了最先进的卫星图像时间序列编码器U - TAE 的性能，使用了对我们的任务1稍作改动的官方实现。  
+**训练**  
+训练为了评估不确定性建模的贡献，我们训练了两个变体：Un CRtainTS - -没有σ，只用L2损失训练，即没有不确定性预测；Un CRtainTS用方程的NLL损失训练。④与重建图像一起预测不确定度。我们使用ADAM优化器[ 41 ]，初始学习率为0.001，批量大小为4，如[ 22 ]。所有模型训练20个历元，指数学习率衰减为0.8，使得率每10个历元衰减约1个数量级。模型在每个历元的验证分割上进行评估，并使用具有最佳验证损失的检查点进行测试。  
+**评估**  
+对于图像重建性能，我们报告了平均绝对误差( Mean Absolute Error，MAE )或均方根误差( Root Mean Squared Error，RMSE )以及峰值信噪比( Peak信漏噪比Noise Ratio，PSNR )、结构相似度( Structural SIMilarity，SSIM )和光谱角映射( Spectral Angle Mapper，SAM )度量。我们通过不确定性校准误差( UCE )来评估不确定性预测的质量。  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/b9e323e3-7781-4801-946e-c9585100290e)  
+式中：e ( Bp )为bin Bp中Np个像素预测的RMSE，P = 20为bin计数，bin的不确定性u ( Bp )由均方根方差( Root Mean Variance，RMV )给出：  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/90ebc98e-a0c5-4cd0-8037-fe28fae125b1)  
+UCE量化了预测不确定性与经验重构误差之间的偏差。较低的UCE对应于校准良好的不确定性。我们还报告了一个名为UCEim的逐块校准度量，其中RMSE和RMV是在计算校准之前对给定图像的所有像素进行空间-光谱平均。  
 
 ## 实验结果
-###  RICE1
-
-**定性分析**
-
-结果如下，从左到右的图片分别是：多云图像、条件GAN的输出、循环GAN的输出、SpA GAN的输出、真实图像。
-![rice1_result](https://github.com/ZYJ-Group/Tanghy/assets/94824386/f0eacf3e-7b45-4e9c-b267-268c53fb2679)  
-
-
-**定量分析**
-
-|               |  峰值信噪比（PSNR）  | 结构相似性指数（SSIM）  |
-| :-----------: | :------------------: | :---------------------: |
-|   **条件GAN**    |        26.547        |          0.903          |
-| **循环GAN** |        25.880        |          0.893          |
-|  **SpA GAN**  |        30.232        |          0.954          |
-
-###  RICE2
-
-**定性分析**
-
-结果如下，从左到右的图片分别是：多云图像、条件GAN的输出、循环GAN的输出、SpA GAN的输出、真实图像。  
-![rice2_result](https://github.com/ZYJ-Group/Tanghy/assets/94824386/1e0d2c78-47f7-4afe-ac9e-b71f0f739369)  
+| 模型                        | RMSE | PSNR  | SSIM  |  SAM   |
+|-----------------------------|------|-------|-------|--------|
+| 最少云量                     | 0.079| —     | 0.815 | 12.204 |
+| DSen2-CR [54]               | 0.060| 26.04 | 0.810 | 12.147 |
+| STGAN [61]                  | 0.057| 25.42 | 0.818 | 12.548 |
+| CR-TS Net [14]              | 0.051| 26.68 | 0.836 | 10.657 |
+| U-TAE [22]                  | 0.051| 27.05 | 0.849 | 11.649 |
+| UnCRtainTS - 无 σ (我们的)   | 0.049| 27.23 | 0.859 | 10.168 |
+| UnCRtainTS (我们的)          | 0.051| 27.84 | 0.866 | 10.160 |
+| UCEim UCE UnCRtainTS (我们的)| 0.010| 0.007 | —     | —      |
 
 
-**定量分析**
 
-|               |  峰值信噪比（PSNR）  | 结构相似性指数（SSIM）  |
-| :-----------: | :------------------: | :---------------------: |
-|   **条件GAN**    |        25.384        |          0.811          |
-| **循环GAN** |        23.910        |          0.793          |
-|  **SpA GAN**  |        28.368        |          0.906          |
-
+## ps.
+### MBConv
+MBConv是移动翻转瓶颈卷积（mobile inverted bottleneck convolution）的缩写，是一种卷积神经网络结构，类似于MobileNetV2和MnasNet，由深度可分离卷积Depthwise Convolution和SENet构成。每个MBConv的网络结构包括1x1升维、Depthwise Convolution、SENet、1x1降维和add操作。EfficientNet的最小搜索单元使用的是MBConv，整个网络架构搜索空间和MnasNet相同。
