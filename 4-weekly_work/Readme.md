@@ -22,5 +22,7 @@
 
 ## 2023-12-20
 [去云文献阅读](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-12-20/Example.md)  
-## 2023-12-20
+## 2023-12-25
 [Comparison of McGAN and SpA-GAN Performance](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023-12-25/Example.md)  
+## 2023
+[年度总结](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2023/Example.md)  
