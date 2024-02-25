@@ -32,3 +32,11 @@
 [迁移学习实现去云大样本模型算法在小样本中的应用](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2024-02-20/Example.md)  
 ## 2024-02-21
 [理解和评估原模型](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2024-02-21/Example.md)  
+## 2024-02-22
+[准备小样本数据集](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2024-02-22/Example.md)  
+## 2024-02-23
+[数据增强](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2024-02-23/Example.md)  
+## 2024-02-24
+[迁移学习的准备工作](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2024-02-24/Example.md)  
+## 2024-02-25
+[迁移学习策略的选择](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2024-02-25/Example.md)  
