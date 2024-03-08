@@ -101,3 +101,29 @@ SCL-MLNet：通过自监督促进少样本遥感场景分类
 2022
 IEEE Trans. Geosci. Remote Sensing
 总而言之，我们的主要贡献如下。 1）我们提出了一种名为SCL-MLNet的端到端多任务框架，用于通过SCL模块进行少镜头遥感场景分类。与现有的few-shot方法不同，SCL-MLNet可以使用数据中的信息和标签作为监督信号。2）基于SCL-MLNet，我们设计了一种新颖的损失函数，可以通过赋予适当的权重系数来平衡SCL损失和少样本分类损失。 3）考虑到类内分类目标大小不同的情况，我们引入了一种新颖的注意力模块来融合不同大小的分类目标的多尺度特征，以丰富视觉表示，具有即插即用和可扩展的特点。 4）与代表性的少样本学习方法相比，我们在三个广泛使用的遥感场景分类数据集上实现了最先进的性能。
+
+
+Semi-Supervised Hyperspectral Image Classification via Spatial-Regulated Self-Training
+通过空间调节自训练进行半监督高光谱图像分类
+Remote Sensing
+2020-01-02
+总之，本文的贡献可概括如下： • 我们引入了一种基于深度学习模型与聚类遥感协作的新型 HSIc 半监督分类算法。  • 相邻高光谱图像中的像素可能属于同一类。我们在上述算法中引入了空间约束来给出平滑度假设以提高 HSIc 的准确性。 • 与以前的方法相比，我们提出的方法在利用微小标记数据的同时，在HSIC 上实现了具有竞争力的性能。
+
+Self-Taught Feature Learning for Hyperspectral Image Classification
+高光谱图像分类的自学特征学习
+5/2017
+IEEE Trans. Geosci. Remote Sensing
+在本文中，我们提出了两种不同的 HSI 分类自学学习框架：1）多尺度 ICA（MICA）和 2）堆叠卷积自动编码器（SCAE）。两个模型都从不同的集合中学习一组可泛化的过滤器未标记的 HSI 数据，但 MICA 学习低级特征表示，而 SCAE 学习更深层次的特征。然后应用这些过滤器对三个流行的标记 HSI 基准数据集进行分类：Indian Pines、Salinas Valley 和 Pavia University。尽管这些数据集具有不同的 GSD，但我们表明 MICA 和 SCAE 仍然能够产生最先进的结果。我们还证明它们的特征可以通过频带重采样跨不同的传感器转移。
+
+MugNet: Deep learning for hyperspectral image classification using limited samples
+MugNet：使用有限样本进行高光谱图像分类的深度学习
+ISPRS Journal of Photogrammetry and Remote Sensing
+11/2018
+MugNet的主要贡献可以概括如下：针对小规模数据分类，开发了基于深度学习的HSI分类方法。与一些最先进方法的对比实验验证了 MugNet 的有效性。为了提高分类性能，MugNet 提出了三种新颖的策略，即多粒度扫描、半监督学习和简单的基本框架。
+
+Low-Shot Learning for the Semantic Segmentation of Remote Sensing Imagery
+遥感图像语义分割的低镜头学习
+IEEE Transactions on Geoscience and Remote Sensing
+2018
+本文的主要贡献如下。 1）我们描述了用于非RGB遥感图像中空间光谱特征提取的堆叠多损失卷积自动编码器（SMCAE）模型（见图4）。 SMCAE 使用无监督自学学习来获取大量特征提取器。 SuSA 使用 SMCAE 进行特征提取。 2）我们提出了半监督多层感知器（SS-MLP）模型（见图5）用于非RGB遥感图像的语义分割。 SuSA 使用 SS-MLP 对 SMCAE 的特征表示进行分类，SS-MLP 的半监督机制使其能够在低样本学习中表现良好。 3) 我们证明 SuSA 在 IEEE GRSS 数据和算法标准评估 (DASE) 网站上托管的 Indian Pines 和 Pavia 大学数据集上取得了最先进的结果。
+
