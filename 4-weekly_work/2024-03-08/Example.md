@@ -69,4 +69,17 @@ Meta-Learning for Few-Shot Land Cover Classification
 用于少样本土地覆盖分类的元学习
 2020 IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)
 6/2020
+我们的主要贡献是（1）证明跨地域的遥感任务可以重构为一个元学习问题，以及（2）评估 MAML 对多光谱和高分辨率遥感图像的少样本分类和分割；具体来说，是被广泛引用的基准数据集 Sen12MS 和 DeepGlobe。
+
+MMML: Multimanifold Metric Learning for Few-Shot Remote-Sensing Image Scene Classification
+MMML：用于少镜头遥感图像场景分类的多流形度量学习
+IEEE Transactions on Geoscience and Remote Sensing
+2023
+我们的贡献可总结如下。 1）我们提出了一个结合了 CNN 和 MMML 的小样本 RSSC 框架。在该框架中，融合了基于CNN局部特征的两个异构且互补的黎曼流形特征，以增强表示能力。在不同的流形空间上定义两个原型作为类别的表示，并探索整合它们的最佳权重因子。 2）我们设计了一种可学习的距离度量方案，可以根据类间对和类内对的分歧进行优化。类间散度与类内散度之比作为计算距离的优化函数，我们应该最大化它，从而减少较大的类内差异和较高的类间相似度对场景识别的影响。 3）我们对三个公共数据集进行了比较实验，以研究我们提出的方法的性能。结果表明，MMML 在小样本 RSSC 任务中优于以前的方法。
+
+Multi-attention DeepEMD for Few-Shot Learning in Remote Sensing
+用于遥感中少样本学习的多注意 DeepEMD
+2020-12-11
+2020 IEEE 9th Joint International Information Technology and Artificial Intelligence Conference (ITAIC)
+本文的主要贡献如下。 1.提出了一种注意力参考机制来计算推土机距离所需的权重。 2.通道和空间注意力模块用于增强模型提取特征的能力。 3.引入标签平滑以避免过拟合。
 
