@@ -83,3 +83,21 @@ Multi-attention DeepEMD for Few-Shot Learning in Remote Sensing
 2020 IEEE 9th Joint International Information Technology and Artificial Intelligence Conference (ITAIC)
 本文的主要贡献如下。 1.提出了一种注意力参考机制来计算推土机距离所需的权重。 2.通道和空间注意力模块用于增强模型提取特征的能力。 3.引入标签平滑以避免过拟合。
 
+Research Progress on Few-Shot Learning for Remote Sensing Image Interpretation ★
+遥感图像解译的少样本学习研究进展
+2021
+IEEE J. Sel. Top. Appl. Earth Observations Remote Sensing
+鉴于对遥感图像解译的少样本学习缺乏全面的综述，我们通过对现有作品的详细文献计量分析，对相关研究进行了全面的回顾，从数据的角度系统地回顾了少样本学习方法增强和知识重用，并讨论遥感图像解释的少样本学习的几个有前途的未来方向。本文可为从事遥感领域少样本学习研究的学者提供参考。
+与基于迁移学习的方法相比，基于元学习的方法可以训练适用于多个任务的元模型，具有快速适应的特点。该方法避免了在迁移学习中手动选择相关性高的源域数据。此外，元学习可以与多种模型集成，用于分类、回归和强化学习。由于这些优点，元学习成为遥感图像解释的小样本学习的理想范例。然而，该方法的一个局限性是元学习需要具有丰富类别多样性的辅助数据集以保证元模型的泛化能力。然而，现有的公开遥感数据集仅包含少量地理空间对象类别。数据集的高要求严重限制了元学习算法的应用。
+
+RS-MetaNet: Deep meta metric learning for few-shot remote sensing scene classification
+RS-MetaNet：用于少镜头遥感场景分类的深度元度量学习
+8/2021
+IEEE Trans. Geosci. Remote Sensing
+总之，这项工作提供了三个贡献： • 我们提出了一种称为 RS-MetaNet 的新颖框架，以提高少样本遥感场景分类的性能。 RS-MetaNet 通过元任务训练模型，这迫使我们的模型学习任务级分布，该分布应该更好地推广到未见过的测试任务。 • 我们提出了一种新的损失函数，称为平衡损失，它将最大泛化损失与交叉熵损失函数结合起来。在损失的约束下，RS-MetaNet通过最大化不同类别之间的距离，最大化模型对新样本的泛化能力，为不同类别的场景提供更好的线性分割平面，同时保证模型拟合。 • 我们的度量模块使用可学习的距离度量，允许RS-MetaNet 充分利用数据本身的信息，使学习的度量空间更具辨别力。
+
+SCL-MLNet: Boosting Few-Shot Remote Sensing Scene Classification via Self-Supervised Contrastive Learning
+SCL-MLNet：通过自监督促进少样本遥感场景分类
+2022
+IEEE Trans. Geosci. Remote Sensing
+总而言之，我们的主要贡献如下。 1）我们提出了一种名为SCL-MLNet的端到端多任务框架，用于通过SCL模块进行少镜头遥感场景分类。与现有的few-shot方法不同，SCL-MLNet可以使用数据中的信息和标签作为监督信号。2）基于SCL-MLNet，我们设计了一种新颖的损失函数，可以通过赋予适当的权重系数来平衡SCL损失和少样本分类损失。 3）考虑到类内分类目标大小不同的情况，我们引入了一种新颖的注意力模块来融合不同大小的分类目标的多尺度特征，以丰富视觉表示，具有即插即用和可扩展的特点。 4）与代表性的少样本学习方法相比，我们在三个广泛使用的遥感场景分类数据集上实现了最先进的性能。
