@@ -57,5 +57,5 @@
 ## 2024-03-12
 [少镜头分类论文调研](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2024-03-12/Example.md)  
 ## 2024-03-14
-[少镜头分类论文调研](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2024-03-14/Example.md)  
+[组会 3.14](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2024-03-14/Example.md)  
 
