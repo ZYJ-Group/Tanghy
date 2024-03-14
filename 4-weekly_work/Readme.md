@@ -40,3 +40,22 @@
 [迁移学习的准备工作](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2024-02-24/Example.md)  
 ## 2024-02-25
 [迁移学习策略的选择](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2024-02-25/Example.md)  
+## 2024-02-26
+[迁移学习策略的选择](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2024-02-26/Example.md)  
+## 2024-02-27
+[想法的实践](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2024-02-27/Example.md)  
+## 2024-02-29
+[小样本数据集的准备](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2024-02-29/Example.md)  
+## 2024-03-04
+[域适应论文调研](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2024-03-04/Example.md)  
+## 2024-03-05
+[去雾域适应论文](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2024-03-05/Example.md)  
+## 2024-03-07
+[元学习论文调研](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2024-03-07/Example.md)  
+## 2024-03-08
+[元学习论文调研](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2024-03-08/Example.md)  
+## 2024-03-12
+[少镜头分类论文调研](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2024-03-12/Example.md)  
+## 2024-03-14
+[少镜头分类论文调研](https://github.com/ZYJ-Group/Tanghy/blob/main/4-weekly_work/2024-03-14/Example.md)  
+
