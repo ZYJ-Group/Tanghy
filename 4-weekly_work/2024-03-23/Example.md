@@ -34,3 +34,10 @@ main(config):
   model definition---model_utils.py,get_model,get_generator/base_model.py/losses.py,get_losses
                                                           /uncrtaints.py
                                                           
+## Train
+
+main(config):
+  Initialization---loss,freeze,resume_at,seed
+  iterate---load,train,save
+  
+  
