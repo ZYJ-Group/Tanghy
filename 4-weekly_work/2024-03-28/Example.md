@@ -1,43 +1,9 @@
-# Uncrtains--去云模型复写
+# Uncrtains--去云模型复现
 
-## Dataload and Model definition
-
-### 文件格式
-- data
-  - dataLoader.py
-- model
-  - src
-    - backbones
-      - base_model.py
-      - uncrtaints.py
-      - utae.py
-    - learning
-      - metrics.py
-      - weight_init.py
-    - losses.py
-    - model_utils.py
-    - utils.py
-  - parse_args.py
-  - test.py
-  - train.py
-- util
-  - pytorch_ssim
-    - __init__.py
-  - detect_cloudshadow.py
- 
-### 按流程梳理
-  以train.py文件的main文件为主流程进行梳理
-
-main(config):
-  config---parse_args.py/
-  dataload---dataLoader.py,SEN12MSCR/seed_worker,generator/
-  model definition---model_utils.py,get_model,get_generator/base_model.py/losses.py,get_losses
-                                                          /uncrtaints.py
-                                                          
-## Train
-
-main(config):
-  Initialization---loss,freeze,resume_at,seed
-  iterate---load,train,save
-  
-  
+# 模型实验结果结果
+模型 | MAE | PSNR | SAM | SSIM 
+--- | --- | --- | --- | ---
+Uncrtains | 0.018935 | 31.36993 | 4.98826 | 0.91439
+Uncrtains+通道注意力 | 0.017446 | 32.13171 | 4.51931 | 0.92112
+Dense+通道注意力 | 0.025222 | 29.58202 | 7.22012 | 0.88301
+Swin-Transformer | 0.028099 | 28.43579 | 7.18267 | 0.84984
