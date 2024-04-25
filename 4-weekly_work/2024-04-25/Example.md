@@ -1,11 +1,11 @@
 # Uncrtains--去云模型复现
 
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/83be75a7-d541-4bfe-9baa-f9035a992400)  
 
 
 
-
-
-
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/3157d389-6cd2-4a56-a08f-dcc6fe2e9dc5)  
+图 多轴特征融合 (MFF) 块概述。通道注意力、深度卷积和我们的 KBA 模块并行处理输入特征。三个运算的输出通过逐点乘法融合。  
 
 # 模型实验结果  
 模型 | RMSE | MAE | PSNR | SAM | SSIM 
