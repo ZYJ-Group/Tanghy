@@ -10,4 +10,5 @@ R001 l2 | 2.3856 | 1.6588 | 32.74606 | **3.78378** | 92.323
 T005 l2 | 2.3933 | 1.6943 | 32.65820 | 3.94305 | 92.758
 
 ![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/7efadf28-49df-455d-a929-66e41e23ff4b)  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/60e49f33-f564-4369-ba4a-37aedc5b8963)  
 ![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/cbff4552-30d6-4edd-9390-f0f1f8f867cf)  
