@@ -8,6 +8,18 @@ R001 l2 | 2.3856 | 1.6588 | 32.74606 | 3.78378 | 92.323
 V004 l2 | 2.4717 | 1.7144 | 32.53386 | 4.00806 | 93.0088 
 V005 l2 | 2.2415 | 1.5245 | 33.38481 | 3.57081 | 93.6914
 V020 l2 | 2.4020 | 1.6885 | 32.70155 | 4.06727 | 92.2331
+W006 l2 | 2.5730 | 1.8303 | 32.14950 | 4.38177 | 90.9375
+
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/b871561b-4a9c-449d-8205-c44d6781c773)  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/4866cc75-24c3-4cc3-b946-efd62a3e67db)  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/c8fec251-b1e1-49b1-885f-7fde4692fb8a)  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/b9a1d6dd-9a56-4ad3-8565-7b87311034b9)  
+
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/3a89a8d6-5824-42e5-98b5-5e43dcf2892a)  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/4664a0ca-1b91-49d9-a02f-1c86761ff99e)  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/962a9cec-7f60-4e1c-8e09-c735fdcce6e0)  
+
+
 
 # 集群结果
 模型 | RMSE | MAE | PSNR | SAM | SSIM 
