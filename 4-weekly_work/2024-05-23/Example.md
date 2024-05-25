@@ -25,8 +25,11 @@ Y005--Y001-PiDiNet
 Y006--3层Conv  
 Y007--Y006+UNet   
 Y008--Y006+SE  
-Y009--Y006+SE+SP+RC  
-
+Y009--Y006+SE+SP+RC  (目前SE)
+Y010--Y008+lee_filter
+Y011--Y008+lee_filter+自编码器
+Y012--Y008+sober残差相加+自编码器
+Y013--Y009+3层UNet
 
 
 
