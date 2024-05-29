@@ -1,5 +1,23 @@
 # Uncrtains--去云模型复现
 
+![219d7c5b5b3fdb71aafe4ca63a89ca9](https://github.com/ZYJ-Group/Tanghy/assets/94824386/e4858fe5-0ac7-444c-ae0d-8d448296a9df)  
+
+融合级别 | 特点 |
+--- | --- |
+像素级融合 | 这种方法直接在像素层面进行操作，结合来自不同传感器的原始像素值以产生更为丰富的图像信息。这种方法适用于需要保留高分辨率细节的应用。
+特征级融合 | 在此级别上，首先从每个源图像中提取特征，然后合并这些特征以形成一个综合特征集，这有助于提高处理后图像的质量和有用性。这种方法常用于需要强化特定图像特征的任务。
+决策级融合 | 在最高层次上，每个源图像首先独立处理，然后根据各自的输出做出最终决策。这种融合适用于情况复杂或需要多个独立判断的应用场景。
+
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/09214949-0964-4e48-8737-46813629450b)  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/38bdba38-cb88-47da-89c4-3f2b6c392432)  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/467fe2fc-cfab-4a31-8f72-c7adc9c235ce)  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/56161209-d0e5-434f-b05e-69cb52a29ccd)  
+
+
+
+
+
+
 # 模型实验结果  
 模型 | RMSE | MAE | PSNR | SAM | SSIM 
 --- | --- | --- | --- | --- | ---
