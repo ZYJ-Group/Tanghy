@@ -1,20 +1,10 @@
-# Uncrtains--去云模型复现
+# 0604汇报
 
-# 模型实验结果  
-模型 | RMSE | MAE | PSNR | SAM | SSIM 
---- | --- | --- | --- | --- | ---
-Uncrtains MGNLL | 3.064 | 2.202 | 30.503 | 4.437 | 92.405
-Z001 l2 | 2.782 | 2.003 | 31.364 | 4.061 | 91.764
-Z002 l203 | 2.546 | 1.832 | 32.116 | 4.403 | 91.792 
-Z003 l2 | 2.730 | 1.952 | 31.521 | 4.673 | 91.669
-Z003 l203 | 2.405 | 1.700 | 32.667 | 4.060 | 92.289
-Z004 l203 | 2.267 | 1.568 | 33.280 | 3.713 | 92.385
-Z006 l203 | 2.469 | 1.715 | 32.683 | 4.017 | 92.914
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/25a14896-8216-4ce9-af88-c914abff9f6a)  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/2cfc31a3-2b72-4d81-bbdd-b68b2e879899)  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/2a32b209-4706-48bc-8f74-6fafb8452d2c)  
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/3ce6d5d6-537b-43cb-bee4-7725b596a0da)  
 
 
-# 集群结果
-模型 | RMSE | MAE | PSNR | SAM | SSIM 
---- | --- | --- | --- | --- | ---
-Uncrtains MGNLL | 3.570 | 2.228 | 29.219 | 6.517 | 89.306
-Z001 l2 | 2.864 | 1.883 | 31.240 | 4.317 | 91.546
-Z003 l203 | 3.414 | 2.227 | 29.870 | 4.784 | 90.827
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/22e60125-cae1-4d27-8cfc-31d0467f012f)
+![image](https://github.com/ZYJ-Group/Tanghy/assets/94824386/efc2cc8a-7e6a-4686-ac1b-49e14d23ec0b)  
