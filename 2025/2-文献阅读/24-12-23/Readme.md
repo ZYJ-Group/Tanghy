@@ -6,7 +6,6 @@ This repository implements **Attentive Contextual Attention (AC-Attention)** for
 
 ## Paper Information
 
-**Title**: Attentive Contextual Attention for Cloud Removal  
 **Authors**: Wenli Huang, Ningbo University of Technology  
 **Published in**: IEEE Transactions on Geoscience and Remote Sensing  
 **Received**: 23 April 2024  
@@ -25,117 +24,117 @@ This repository implements **Attentive Contextual Attention (AC-Attention)** for
 - **Relevant Distant Context**
 - **Remote Sensing Images**
 
----
+## 实验细节
+- **Dataset**  
+  **RICE-I、RICE-II、SEN2MS-CR**
+- **Baseline**  
+ **pix2pix、 SpA GAN  STGAN  DSen2-CR  UnCRtainTS  Ours**
 
-## 1. Contributions
 
-The key contributions of this paper are:
-1. **Introduction of AC-Attention**: Designed to capture long-distance features and eliminate irrelevant or unimportant patterns.
-2. **Integration of AC-Attention into ACA-CRNet**: We demonstrate the effectiveness of AC-Attention in improving cloud removal capabilities.
-3. **Evaluation on Three Diverse Datasets**: Our approach outperforms existing cloud removal methods, with both visual and quantitative results. Ablation studies further confirm the efficacy of AC-Attention in attending to informative long-distance contexts.
 
----
 
-## 2. Framework
-
-### I. Introduction
-- **Motivation**: Cloud removal is crucial for high-quality remote sensing image analysis. This paper proposes a novel method for effective cloud removal by leveraging the AC-Attention mechanism.
-
-### II. Related Works
-- **A. Traditional Cloud Removal Methods**: A brief discussion on classical methods for cloud removal.
-- **B. Deep Learning-Based Cloud Removal Methods**: Reviews recent advancements in deep learning techniques for cloud removal.
-
-### III. Methodology
-#### A. Attentive Contextual Attention (AC-Attention)
-1. **Vanilla Attention**: Traditional attention mechanisms that focus on local regions.
-2. **Attentive Contextual Attention**:
-   - **a) Embedding and Reshaping**: Captures features at different spatial levels.
-   - **b) Attentive Matching**: Identifies relevant distant context for cloud removal.
-   - **c) Attending**: Attends to informative regions for improved prediction.
-
-#### B. Network Architecture
-1. **Architecture**: The ACA-CRNet is designed with a residual network structure, integrating the AC-Attention for optimal performance.
-2. **Residual Block**: Details the residual connections used to stabilize training and improve accuracy.
+## 1. 贡献
+The contributions of this article are summarized as follows:  
+1. We introduce **AC-Attention**, designed to capture informative **long-distance features** and eliminate irrelevant or unimportant patterns.  
+2. We integrate **AC-Attention** into our **ACA-CRNet** to improve its cloud removal capabilities and demonstrate its effectiveness.  
+3. We evaluate our approach on **three diverse datasets**, yielding both visual and quantitative results that outperform existing cloud removal methods. In addition, ablation studies confirm that **AC-Attention** effectively attends to informative long-distance contexts, highlighting its adaptability and effectiveness.
 
 ---
 
-## 3. Experiment
+## 2. 框架
+**I. INTRODUCTION**  
+**II. RELATED WORKS**  
+- A. Traditional Cloud Removal Methods  
+- B. Deep Learning-Based Cloud Removal Methods  
 
-### A. Experiment Details
-- **Datasets**:  
-  - **RICE-I**  
-  - **RICE-II**  
-  - **SEN2MS-CR**
-  
-- **Metrics**: Performance is evaluated using standard cloud removal metrics.
-  
-- **Implementation Details**: We describe the network setup, training parameters, and data preprocessing.
+**III. METHODOLOGY**  
+- A. Attentive Contextual Attention（上下文注意力）  
+  1) Vanilla Attention  
+  2) Attentive Contextual Attention:  
+    - a) Embedding and reshaping  
+    - b) Attentive matching  
+    - c) Attending  
+- B. Network Architecture  
+  1) Architecture  
+  2) Residual Block  
 
-### B. Performance of ACA-CRNet
-1. **Comparison Baselines**:
-   - **pix2pix**
-   - **SpA GAN**
-   - **STGAN**
-   - **DSen2-CR**
-   - **UnCRtainTS**
-   - **Ours**
-   
-2. **Quantitative Comparison**:  
-   Visual and quantitative results demonstrate that ACA-CRNet outperforms the baselines on all evaluated datasets.
+**IV. EXPERIMENT**  
+- A. Experiment Details  
+  1) Datasets  
+  2) Metrics  
+  3) Implementation Details  
+- B. Performance of ACA-CRNet  
+  1) Comparison Baselines  
+  2) Quantitative Comparison With Baselines  
+  3) Qualitative Comparison With Baselines  
+- C. Ablation Studies  
+  1) Effectiveness of Our AC-Attention  
+  2) Attentive Similarity Score Analysis  
 
-3. **Qualitative Comparison**:  
-   Visual comparison of cloud removal results highlights the effectiveness of ACA-CRNet.
-
-### C. Ablation Studies
-1. **Effectiveness of AC-Attention**:  
-   Ablation studies confirm that AC-Attention significantly enhances cloud removal.
-   
-2. **Attentive Similarity Score Analysis**:  
-   Detailed analysis of how AC-Attention improves feature matching.
+**V. CONCLUSION**  
 
 ---
 
-## 4. Visualizations
-
-### Fig. 1: Comparison of CA and AC-Attention
-![Fig. 1: Comparison of CA and AC-Attention](https://github.com/user-attachments/assets/6380228d-197f-4c8e-8d5f-52052e1f0829)
-- The first two columns show selected query features (red stars) and features with high similarity (magenta pentagons).
-- The following columns show similarity scores and cloud removal results.
+## 3. 图表
+### 图 1: Comparison between the CA and our proposed AC-Attention  
+The first two columns show a selected query feature, marked by red stars, along with features within the top 5% similarity to the query feature, marked by magenta pentagons. The following two columns display the similarity scores for this query feature. The next two columns present the cloud removal results.  
+![Fig. 1](https://github.com/user-attachments/assets/6380228d-197f-4c8e-8d5f-52052e1f0829)
 
 ---
 
-### Fig. 2: Architecture of AC-Attention
-![Fig. 2: Architecture of AC-Attention](https://github.com/user-attachments/assets/d15d9069-6ba5-46eb-bbf0-914f55f32489)
-- The AC-Attention mechanism is composed of three steps: embedding and reshaping, attentive matching, and attending.
+### 图 2: Architecture of AC-Attention  
+AC-Attention consists of three steps: embedding and reshaping, attentive matching, and attending.  
+![Fig. 2](https://github.com/user-attachments/assets/d15d9069-6ba5-46eb-bbf0-914f55f32489)
 
 ---
 
-### Fig. 3: Overview of ACA-CRNet
-![Fig. 3: Overview of ACA-CRNet](https://github.com/user-attachments/assets/226bb12f-122e-4c1e-b30c-bd82dd0a3174)
-- The ACA-CRNet architecture includes various components like Stem, RB, RACAB, and Refine.
+### 图 3: Overview of ACA-CRNet Architecture  
+(a) ACA-CRNet architecture, (b) Stem, (c) RB, (d) RACAB, and (e) Refine component. The ACA-CRNet is designed in a residual style, comprising the Stem, RBs, RACABs, and Refine modules.  
+![Fig. 3](https://github.com/user-attachments/assets/226bb12f-122e-4c1e-b30c-bd82dd0a3174)
 
 ---
 
-### Fig. 4: Cloud Removal Results on RICE-I and RICE-II
-![Fig. 4: Cloud Removal Results on RICE-I and RICE-II](https://github.com/user-attachments/assets/74bef0a1-1110-4440-be46-bc7cb296f494)
-- Visual results show improved cloud removal on RICE-I and RICE-II datasets.
+### 图 4: Visualization of Cloud Removal Results on RICE-I and RICE-II Datasets  
+Local details are highlighted in red boxes. Zooming in is recommended for a clearer view.  
+![Fig. 4](https://github.com/user-attachments/assets/74bef0a1-1110-4440-be46-bc7cb296f494)
 
 ---
 
-### Fig. 5: Cloud Removal Results on SEN12MS-CR Dataset
-![Fig. 5: Cloud Removal Results on SEN12MS-CR](https://github.com/user-attachments/assets/80f3963e-15fe-4f88-b727-e2f73bce388d)
-- Visual results for Sentinel-2 satellite data, demonstrating the effectiveness of ACA-CRNet.
+### 图 5: Cloud Removal Results for Sentinel-2 Satellite Data on the SEN12MS-CR Dataset  
+The Sentinel-2 data includes 13 spectral bands, with the visualization images generated using the RGB bands. Zooming in is recommended for a clearer view.  
+![Fig. 5](https://github.com/user-attachments/assets/80f3963e-15fe-4f88-b727-e2f73bce388d)
 
 ---
 
-### Fig. 6: Effectiveness of AC-Attention in ACA-CRNet
-![Fig. 6: Effectiveness of AC-Attention](https://github.com/user-attachments/assets/29318301-a159-4e14-bac1-9ad667d2ac6b)
-- Visualization demonstrating the impact of AC-Attention on cloud removal performance.
+### 图 6: Visualization Results of ACA-CRNet  
+Demonstrating the effectiveness of our AC-Attention.  
+![Fig. 6](https://github.com/user-attachments/assets/29318301-a159-4e14-bac1-9ad667d2ac6b)
 
 ---
 
-### Fig. 7: AC-Attention vs CA
-![Fig. 7: AC-Attention vs CA](https://github.com/user-attachments/assets/99123528-4890-4706-8566-10df3fbc0d63)
-- Comparison showing similarity scores and removal results between CA and AC-Attention.
+### 图 7: Effectiveness of AC-Attention on Three Network Architectures  
+Visualizing the top 5% similarity scores and similarity maps.  
+![Fig. 7](https://github.com/user-attachments/assets/99123528-4890-4706-8566-10df3fbc0d63)
 
 ---
+
+### 图 8: Effectiveness of AC-Attention in Established Methods  
+Illustrating the impact of AC-Attention in cloud removal methods.  
+![Fig. 8](https://github.com/user-attachments/assets/35e65f04-673c-4136-9459-f09819ac55c8)
+
+---
+
+### 图 9: Comparison of Cloud Removal Results  
+Quantitative comparison results across three datasets.  
+![Fig. 9](https://github.com/user-attachments/assets/cbb276ce-3cb1-40ed-8d07-c5514c58c2d4)
+
+---
+
+### 图 10: Publicly Available Datasets for Cloud Removal Experiments  
+Used datasets for evaluating cloud removal methods.  
+![Fig. 10](https://github.com/user-attachments/assets/2430398e-a01c-4ac5-b992-ea490dd8856d)
+
+---
+
+---
+
