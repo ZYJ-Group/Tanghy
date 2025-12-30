@@ -32,53 +32,64 @@ To overcome these limitations, this article proposes a novel target 3-D reconstr
 - REFERENCES
 
 ## Figures (Captions / Placeholders)
-- **Fig. 1.** Target 3-D reconstruction geometry with three antennas. (II)
-<img width="771" height="697" alt="image" src="https://github.com/user-attachments/assets/1a2a4f32-e02f-475a-b6c8-aabe126b8c76" />
+- **Fig. 1.** Target 3-D reconstruction geometry with three antennas. (II)  
+<img src="https://github.com/user-attachments/assets/1a2a4f32-e02f-475a-b6c8-aabe126b8c76" width="520" />
 
-- **Fig. 2.** Projection of target 3-D reconstruction geometry on XOZ plane.(III.A)
-<img width="997" height="820" alt="image" src="https://github.com/user-attachments/assets/4ecec1ce-86fa-4131-a268-40d12e1a2864" />
+- **Fig. 2.** Projection of target 3-D reconstruction geometry on XOZ plane. (III.A)  
+<img src="https://github.com/user-attachments/assets/4ecec1ce-86fa-4131-a268-40d12e1a2864" width="520" />
 
-- **Fig. 3.** Image registration result of antennas A and B.(III.A)
-<img width="646" height="791" alt="image" src="https://github.com/user-attachments/assets/30bbc716-8137-4242-a995-4f0677fa17a7" />
+- **Fig. 3.** Image registration result of antennas A and B. (III.A)  
+<img src="https://github.com/user-attachments/assets/30bbc716-8137-4242-a995-4f0677fa17a7" width="520" />
 
-- **Fig. 4.** Flowchart of target 3-D reconstruction based on phase-derived technology.
-<img width="711" height="683" alt="image" src="https://github.com/user-attachments/assets/0d77ed24-7f2c-489b-b352-884fe857b2ca" />
+- **Fig. 4.** Flowchart of target 3-D reconstruction based on phase-derived technology. (III.B)  
+<img src="https://github.com/user-attachments/assets/0d77ed24-7f2c-489b-b352-884fe857b2ca" width="520" />
 
-- **Fig. 5.** Analysis of (a) and (b) measurement precision.
-<img width="956" height="439" alt="image" src="https://github.com/user-attachments/assets/6fbd0ed8-781b-403f-8492-122023250afe" />
+- **Fig. 5.** Analysis of (a) and (b) measurement precision. (IV)  
+<img src="https://github.com/user-attachments/assets/6fbd0ed8-781b-403f-8492-122023250afe" width="520" />
 
-- **Fig. 6.** Analysis of (a) Xk measurement precision. (b) Yk measurement precision. (c) Zk measurement precision. (d) 3-D position precision.
-<img width="952" height="842" alt="image" src="https://github.com/user-attachments/assets/7731c191-6f34-44d2-ab89-3432fbee4912" />
+- **Fig. 6.** Analysis of (a) Xk measurement precision. (b) Yk measurement precision. (c) Zk measurement precision. (d) 3-D position precision. (IV)  
+<img src="https://github.com/user-attachments/assets/7731c191-6f34-44d2-ab89-3432fbee4912" width="520" />
 
-- **Fig. 7.** 3-D model of the target composed of ideal point-like scatterers.
-<img width="959" height="751" alt="image" src="https://github.com/user-attachments/assets/a053e2a0-094d-4c43-8d1c-362df72e222e" />
+- **Fig. 7.** 3-D model of the target composed of ideal point-like scatterers. (V.A.1)  
+<img src="https://github.com/user-attachments/assets/a053e2a0-094d-4c43-8d1c-362df72e222e" width="520" />
 
-- **Fig. 8.** ISAR images of three antennas and positions of scatterers in ISAR images with registration. (a) ISAR image of antenna A. (b) ISAR image of antenna B. (c) ISAR image of antenna C. (d) Image registration result.
-<img width="963" height="838" alt="image" src="https://github.com/user-attachments/assets/ba4f8f98-54ca-4ffc-870b-348eff2acea1" />
+- **Fig. 8.** ISAR images of three antennas and positions of scatterers in ISAR images with registration. (a) ISAR image of antenna A. (b) ISAR image of antenna B. (c) ISAR image of antenna C. (d) Image registration result. (V.A.1)  
+<img src="https://github.com/user-attachments/assets/ba4f8f98-54ca-4ffc-870b-348eff2acea1" width="520" />
 
-- **Fig. 9.** Reconstruction result of the proposed method.
-<img width="712" height="598" alt="image" src="https://github.com/user-attachments/assets/7203ebb4-cde4-4e0f-9f54-a9b4de4283eb" />
+- **Fig. 9.** Reconstruction result of the proposed method. (V.A.1)  
+<img src="https://github.com/user-attachments/assets/7203ebb4-cde4-4e0f-9f54-a9b4de4283eb" width="520" />
 
-- **Fig. 10.** Model of the simulated airplane target. (a) 3-D model of the target. (b) Top view of the target. (c) Front view of the target. (d) Side view of the target.
-<img width="1030" height="856" alt="image" src="https://github.com/user-attachments/assets/e7617ef1-3055-4452-94e1-0909771c04e0" />
+- **Fig. 10.** Model of the simulated airplane target. (a) 3-D model of the target. (b) Top view of the target. (c) Front view of the target. (d) Side view of the target. (V.A.2)  
+<img src="https://github.com/user-attachments/assets/e7617ef1-3055-4452-94e1-0909771c04e0" width="520" />
 
-- **Fig. 11.** Imaging result of algorithm proposed in [28]. (a) 3-D reconstruction model. (b) Top view of the target. (c) Front view of the target. (d) Side view of the target.
-<img width="991" height="868" alt="image" src="https://github.com/user-attachments/assets/499d7472-db7b-498e-8f58-4d8187dd3e78" />
+- **Fig. 11.** Imaging result of algorithm proposed in [28]. (a) 3-D reconstruction model. (b) Top view of the target. (c) Front view of the target. (d) Side view of the target. (V.A.2)  
+<img src="https://github.com/user-attachments/assets/499d7472-db7b-498e-8f58-4d8187dd3e78" width="520" />
 
-- **Fig. 12.** Interference phase unwrapping result and real phase. (a) Antennas A and B. (b) Antenna A and C.
-<img width="949" height="429" alt="image" src="https://github.com/user-attachments/assets/84c7da7e-63f9-47a0-85ff-f84350bb4f31" />
+- **Fig. 12.** Interference phase unwrapping result and real phase. (a) Antennas A and B. (b) Antenna A and C. (V.A.2)  
+<img src="https://github.com/user-attachments/assets/84c7da7e-63f9-47a0-85ff-f84350bb4f31" width="520" />
 
-- **Fig. 13.** Target 3-D reconstruction result of the proposed method. (a) 3-D reconstruction model. (b) Top view of the target. (c) Front view of the target. (d) Side view of the target.
-<img width="994" height="844" alt="image" src="https://github.com/user-attachments/assets/eff20b8d-16ae-4580-aa1a-6eab6e0eb13f" />
+- **Fig. 13.** Target 3-D reconstruction result of the proposed method. (a) 3-D reconstruction model. (b) Top view of the target. (c) Front view of the target. (d) Side view of the target. (V.A.2)  
+<img src="https://github.com/user-attachments/assets/eff20b8d-16ae-4580-aa1a-6eab6e0eb13f" width="520" />
 
-- **Fig. 14.** (a) Experimental scene. (b) Optical image of the airplane target.
-<img width="1038" height="586" alt="image" src="https://github.com/user-attachments/assets/ac72abee-01e1-469f-b658-b648bab50950" />
+- **Fig. 14.** (a) Experimental scene. (b) Optical image of the airplane target. (V.B)  
+<img src="https://github.com/user-attachments/assets/ac72abee-01e1-469f-b658-b648bab50950" width="520" />
 
-- **Fig. 15.** Part of process flow. (a) PDVM result of four antennas. (b) Pulse compression results. (c) Result of translational motion compensation and MTRC correction. (d) ISAR image.
-<img width="959" height="841" alt="image" src="https://github.com/user-attachments/assets/4e93f9b3-cf29-4671-b782-b83779d7db7b" />
+- **Fig. 15.** Part of process flow. (a) PDVM result of four antennas. (b) Pulse compression results. (c) Result of translational motion compensation and MTRC correction. (d) ISAR image. (V.B)  
+<img src="https://github.com/user-attachments/assets/4e93f9b3-cf29-4671-b782-b83779d7db7b" width="520" />
 
-- **Fig. 16.** Scatterers positioning result of Airbus A332 by proposed method.
-<img width="494" height="406" alt="image" src="https://github.com/user-attachments/assets/34590da1-c234-47b1-b7c3-fe3c44d2cb83" />
+- **Fig. 16.** Scatterers positioning result of Airbus A332 by proposed method. (V.B)  
+<img src="https://github.com/user-attachments/assets/34590da1-c234-47b1-b7c3-fe3c44d2cb83" width="520" />
 
-- **Fig. 17.** Reconstruction result of Airbus A332 by proposed method. (a) 3-D reconstruction model. (b) Top view of the target. (c) Front view of the target. (d) Side view of the target.
-<img width="701" height="608" alt="image" src="https://github.com/user-attachments/assets/add02187-55bf-452a-ac12-73987b2a7a22" />
+- **Fig. 17.** Reconstruction result of Airbus A332 by proposed method. (a) 3-D reconstruction model. (b) Top view of the target. (c) Front view of the target. (d) Side view of the target. (V.B)  
+<img src="https://github.com/user-attachments/assets/add02187-55bf-452a-ac12-73987b2a7a22" width="520" />
+
+
+## TABLE
+- **Tab. 1.** SIMULATION PARAMETERS OF THE IMAGING SYSTEM
+<img src="https://github.com/user-attachments/assets/6622a95e-d7d7-4a0c-9d63-51f257617df3" width="520" />
+
+- **Tab. 2.** SIMULATION PARAMETERS OF THE IMAGING SYSTEM
+<img src="https://github.com/user-attachments/assets/e965c750-6163-4e87-8a1a-0f20ac1a7712" width="520" />
+
+- **Tab. 3.** ROBUSTNESS OF THE PROPOSED METHOD
+<img src="https://github.com/user-attachments/assets/9505f7b1-9204-4e4d-9b78-e59b49274cb2" width="520" />
