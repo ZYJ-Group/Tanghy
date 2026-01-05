@@ -11,9 +11,9 @@
 - 重要性：SSA 需要空间目标 3-D 信息；仅靠 ISAR 难以在自旋场景确定动态姿态与投影关系，光学图像又常因过曝/过暗与扰动导致纹理不足，故需要统一、稳健的轮廓类信息并进行跨模态融合。
 
 ## A2. 系统/几何/坐标系语境
-- 同址几何：ISAR 与 optical 传感器位于同一站点；两者成像平面近似正交（co-location + synchronized observation 形成两正交投影平面）。（Sec. II, Fig. 1, Fig. 3）
-- 坐标系：建立雷达坐标系（东/北/上）与目标轨道坐标系 $`O'XYZ`$；LOS 向量从雷达系变换到轨道系，以角 $`\theta,\phi`$ 参数化。（Sec. II, Eq. (1), Fig. 2）
-- 关键测量量/符号：ISAR 的距离向投影向量 $`\mathbf{k}_{\mathrm{radar},r}`$ 与多普勒向（方位）投影向量 $`\mathbf{k}_{\mathrm{radar},d}`$；光学投影向量 $`\mathbf{k}_{\mathrm{optical},u},\mathbf{k}_{\mathrm{optical},v}`$；有效旋转向量 $`\boldsymbol{\omega}_{\mathrm{eff}}`$；目标结构线特征（太阳翼长/短边）$`\mathbf{s}_l,\mathbf{s}_s`$。（Sec. II, Eq. (2)–(8), Sec. III-A）
+- 同址几何：ISAR 与 optical 传感器位于同一站点；两者成像平面近似正交（co-location + synchronized observation 形成两正交投影平面）。
+- 坐标系：建立雷达坐标系（东/北/上）与目标轨道坐标系 $`O'XYZ`$；LOS 向量从雷达系变换到轨道系，以角 $`\theta,\phi`$ 参数化。
+- 关键测量量/符号：ISAR 的距离向投影向量 $`\mathbf{k}_{\mathrm{radar},r}`$ 与多普勒向（方位）投影向量 $`\mathbf{k}_{\mathrm{radar},d}`$；光学投影向量 $`\mathbf{k}_{\mathrm{optical},u},\mathbf{k}_{\mathrm{optical},v}`$；有效旋转向量 $`\boldsymbol{\omega}_{\mathrm{eff}}`$；目标结构线特征（太阳翼长/短边）$`\mathbf{s}_l,\mathbf{s}_s`$。
 <table>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/eea038f1-925c-4ecb-97eb-5455e4a89dba" width="360" /></td>
@@ -69,14 +69,14 @@
 - 输入：LOS 序列、目标轨道坐标系定义、雷达波长 $`\lambda`$、CPI 等。
 - 输出：ISAR 两轴投影向量、光学投影向量/矩阵表达，以及正交投影近似成立条件。
 - 关键点：把 ISAR 与 optical 都写成“3-D 点到 2-D 坐标”的投影形式，后续可统一做 silhouette-based 重建。
-- 流程：定义坐标系与 LOS → 得到 ISAR 投影向量与 optical 投影基底 → 为后续统一 silhouette 投影做准备。（Sec. II）
+- 流程：定义坐标系与 LOS → 得到 ISAR 投影向量与 optical 投影基底 → 为后续统一 silhouette 投影做准备。
 
 ---
 
 ## D2. Dynamic Parameter Estimation（动态参数估计）—由两模态投影长度恢复 ISAR 方位投影与有效旋转
-- 输入：太阳翼长/短边投影长度特征（ISAR 与 optical），以及已知 $`\mathbf{k}_{\mathrm{optical},u},\mathbf{k}_{\mathrm{optical},v},\mathbf{k}_{\mathrm{radar},r}`$。（Sec. III-A）
-- 输出：$`\mathbf{k}_{\mathrm{radar},d}`$ 与 $`\|\boldsymbol{\omega}_{\mathrm{eff}}\|`$ 等动态量。（Sec. III-A）
-- 关键点：先用三条投影约束恢复 3-D 边向量，再用光学基底参数化 ISAR 方位向，从而把未知量降维。（Sec. III-A）
+- 输入：太阳翼长/短边投影长度特征（ISAR 与 optical），以及已知 $`\mathbf{k}_{\mathrm{optical},u},\mathbf{k}_{\mathrm{optical},v},\mathbf{k}_{\mathrm{radar},r}`$。
+- 输出：$`\mathbf{k}_{\mathrm{radar},d}`$ 与 $`\|\boldsymbol{\omega}_{\mathrm{eff}}\|`$ 等动态量。
+- 关键点：先用三条投影约束恢复 3-D 边向量，再用光学基底参数化 ISAR 方位向，从而把未知量降维。
 
 $$
 \mathbf{A}\mathbf{s}=\mathbf{b},\quad
@@ -115,7 +115,7 @@ $$
 含义：在得到 $`\mathbf{k}_{\mathrm{radar},d}`$ 与两条边 3-D 向量后，估计有效旋转角速度幅值。  
 （Eq. (20), Sec. III-A）
 
-- 流程：由投影长度解 $`\mathbf{s}_l,\mathbf{s}_s`$ → 由光学基底求 $`\mathbf{k}_{\mathrm{radar},d}`$ → 得到 $`\|\boldsymbol{\omega}_{\mathrm{eff}}\|`$。（Algorithm 1, Sec. III-A）
+- 流程：由投影长度解 $`\mathbf{s}_l,\mathbf{s}_s`$ → 由光学基底求 $`\mathbf{k}_{\mathrm{radar},d}`$ → 得到 $`\|\boldsymbol{\omega}_{\mathrm{eff}}\|`$。
 
 ---
 
@@ -176,12 +176,12 @@ $$
 
 ## E1. 证明结构分割网络可获得高质量结构级轮廓
 - 目的：验证 ISAR 结构级语义分割的准确性与相对优势。
-- 设置：训练数据为全视角大规模仿真 ISAR 数据；测试集为自旋目标轨道数据；指标为各类别 IOU。（Sec. V-A, Sec. V-B, Table IV, Table V）
-- 对比：FCN、U-Net、PSPNet、Segmenter、Segformer 与 CFAR 阈值法。（Sec. V-B, Table V）
+- 设置：训练数据为全视角大规模仿真 ISAR 数据；测试集为自旋目标轨道数据；指标为各类别 IOU。
+- 对比：FCN、U-Net、PSPNet、Segmenter、Segformer 与 CFAR 阈值法。
 - 结论：
-  - Deeplabv3+ 在 Table V 中总体最好，尤其 solar panel IOU 超过 0.87；前景/背景平均 IOU 超过 0.90。（Sec. V-B, Table V）
-  - 相比 CFAR 的前景阈值分割（IOU 约 0.7635），NN 显著更好，且轮廓更闭合、更完整。（Sec. V-B, Table V, Fig. 15）
-  - 论文指出轮廓不准将直接导致 3-D 重建不准。（Sec. V-B）
+  - Deeplabv3+ 在 Table V 中总体最好，尤其 solar panel IOU 超过 0.87；前景/背景平均 IOU 超过 0.90。
+  - 相比 CFAR 的前景阈值分割（IOU 约 0.7635），NN 显著更好，且轮廓更闭合、更完整。
+  - 论文指出轮廓不准将直接导致 3-D 重建不准。
 
 <table>
   <tr>
@@ -226,12 +226,12 @@ $$
 
 ## E3. 证明 joint ISAR–optical 在三轴稳定条件下优于仅 ISAR（对应：Sec. V-D, Table VIII, Fig. 18–19）
 - 目的：验证在三轴稳定目标场景下，联合观测对 3-D 结构信息的增益。
-- 设置：每目标使用 10 个 joint 帧（共 20 张图），分别做 only ISAR、only optical、ISAR–optical；指标为 voxel IOU。（Sec. V-D, Table VIII）
-- 对比：only ISAR vs only optical vs joint。（Sec. V-D）
+- 设置：每目标使用 10 个 joint 帧（共 20 张图），分别做 only ISAR、only optical、ISAR–optical；指标为 voxel IOU。
+- 对比：only ISAR vs only optical vs joint。
 - 结论：
-  - Table VIII 显示 only ISAR 的 voxel IOU 极低（如 Aura 0.0376、ENVISAT 0.0353、Tiangong-1 0.1109），only optical 与 joint 明显更高（均 > 0.6）。（Sec. V-D, Table VIII）
-  - 文中解释：三轴稳定单次过站时 LOS 序列近似位于目标坐标系的扇形平面，ISAR 图像主要表现为绕中心旋转，难提供足够 3-D 几何信息，导致重建呈“柱状”。（Sec. V-D, Fig. 18, Fig. 19）
-  - joint 情况可获得更丰富几何信息，但三轴稳定条件下 3-D 信息主要由 optical 贡献。（Sec. V-D）
+  - Table VIII 显示 only ISAR 的 voxel IOU 极低（如 Aura 0.0376、ENVISAT 0.0353、Tiangong-1 0.1109），only optical 与 joint 明显更高（均 > 0.6）。
+  - 文中解释：三轴稳定单次过站时 LOS 序列近似位于目标坐标系的扇形平面，ISAR 图像主要表现为绕中心旋转，难提供足够 3-D 几何信息，导致重建呈“柱状”。
+  - joint 情况可获得更丰富几何信息，但三轴稳定条件下 3-D 信息主要由 optical 贡献。
 
 <table>
   <tr>
@@ -243,15 +243,15 @@ $$
 图18 .目标轨道坐标系下视轴矢量序列的可视化。( a )、( b )分别为三轴稳定条件和自旋条件的Aura ' s LOS序列。( c )、( d )分别为三轴稳定工况和自旋工况的微波遥感卫星LOS序列。( e )和( f )分别是三轴稳定条件和自旋条件下Tiangong - 1的LOS序列。 
 图19 .三轴稳定目标重建结果。第一列是Aura，第二列是微波遥感卫星，第三列是Tiangong - 1。( a ) - ( c )仅Isar图像。( d ) - ( f ) ISAR -光学图像对。表8三轴稳定目标重构Iou。
 
-## E4. 证明自旋场景下“投影向量估计 + 方位尺度校准 + 高质量 silhouette”是 joint 重建成功的必要条件（对应：Sec. V-D, Table IX–X, Fig. 20）
+## E4. 证明自旋场景下“投影向量估计 + 方位尺度校准 + 高质量 silhouette”是 joint 重建成功的必要条件
 - 目的：分离验证投影向量估计、ISAR 方位校准与 silhouette 质量对重建的影响。
-- 设置：自旋目标下设计 8 种配置（是否使用 optical/ISAR、silhouette 类型、是否做投影向量估计、是否做方位校准）；每配置 10 个 joint 帧；阈值 thr 取候选体素最大累积的 95%。（Sec. V-D, Table IX–X）
-- 对比：Configuration I–VIII。（Sec. V-D）
+- 设置：自旋目标下设计 8 种配置（是否使用 optical/ISAR、silhouette 类型、是否做投影向量估计、是否做方位校准）；每配置 10 个 joint 帧；阈值 thr 取候选体素最大累积的 95%。
+- 对比：Configuration I–VIII。
 - 结论：
-  - Configuration IV（joint 但不做投影向量估计与方位校准）失败，说明错误投影关系会“显著破坏”结果。（Sec. V-D, Table IX–X）
-  - Configuration V（做投影向量估计但不做方位校准）出现结构缺失（文中以 Tiangong-1 太阳翼缺体素为例），说明跨帧方位尺度不一致会导致信息丢失。（Sec. V-D, Fig. 20）
-  - Configuration VI（本文完整流程：投影估计 + 方位校准 + NN silhouette）达到最高/近最高 IOU（Aura 0.7358、ENVISAT 0.7258、Tiangong 0.8243；平均 0.7620），并优于 only ISAR（Configuration II）与 only optical（Configuration III）。（Sec. V-D, Table X）
-  - Configuration VII 用 CFAR silhouette 时 IOU 显著下降（平均约 0.4573），论文归因于轮廓一致性与完整性差。（Sec. V-D, Table IX–X）
+  - Configuration IV（joint 但不做投影向量估计与方位校准）失败，说明错误投影关系会“显著破坏”结果。
+  - Configuration V（做投影向量估计但不做方位校准）出现结构缺失（文中以 Tiangong-1 太阳翼缺体素为例），说明跨帧方位尺度不一致会导致信息丢失。
+  - Configuration VI（本文完整流程：投影估计 + 方位校准 + NN silhouette）达到最高/近最高 IOU（Aura 0.7358、ENVISAT 0.7258、Tiangong 0.8243；平均 0.7620），并优于 only ISAR（Configuration II）与 only optical（Configuration III）。
+  - Configuration VII 用 CFAR silhouette 时 IOU 显著下降（平均约 0.4573），论文归因于轮廓一致性与完整性差。
 
 <table>
   <tr>
@@ -269,14 +269,14 @@ $$
 图20 .不同构型下的自旋目标重构结果。第一列是Aura，第二列是微波遥感卫星，第三列是Tiangong - 1。8行代表8种不同的配置，详见表IX。
 
 
-## E5. 证明方法对帧数与投影误差具有可量化的适用边界（对应：Sec. V-D, Table XI, Fig. 21, Sec. VI）
+## E5. 证明方法对帧数与投影误差具有可量化的适用边界
 - 目的：量化 joint 帧数、silhouette 类型、视角误差对 voxel IOU 的影响。
-- 设置：在 Configuration VI 下改变 joint 帧数 $`F`$（从满足分割有效的 20 帧中抽取），并在全视角大规模仿真数据上重复实验 15 次；视角误差从 $`1^\circ`$ 到 $`5^\circ`$；对比 CFAR vs NN silhouette。（Sec. V-D, Table XI, Fig. 21）
-- 对比：不同 $`F`$、不同 silhouette、不同视角误差曲线。（Sec. V-D）
+- 设置：在 Configuration VI 下改变 joint 帧数 $`F`$（从满足分割有效的 20 帧中抽取），并在全视角大规模仿真数据上重复实验 15 次；视角误差从 $`1^\circ`$ 到 $`5^\circ`$；对比 CFAR vs NN silhouette。
+- 对比：不同 $`F`$、不同 silhouette、不同视角误差曲线。
 - 结论：
-  - Table XI 显示随 $`F`$ 增加 IOU 上升，约在 $`F=10`$ 时三目标 IOU 可达 $`\ge 0.7`$ 量级；继续增加后提升趋缓，论文归因于固定阈值 thr、silhouette 误差与单次过站信息有限。（Sec. V-D, Table XI）
-  - Fig. 21 显示 NN silhouette 曲线显著优于 CFAR；当总图像帧数 $`\ge 20`$（即 $`F\ge 10`$）且视角误差 $`\le 2^\circ`$ 时，IOU 可超过 0.7（图中红虚线门限）。（Sec. V-D, Fig. 21）
-  - 结论部分进一步总结：当 joint 帧数大于 10、视角误差小于 $`2^\circ`$ 时，可达到 voxel IOU $`>0.72`$。（Sec. VI）
+  - Table XI 显示随 $`F`$ 增加 IOU 上升，约在 $`F=10`$ 时三目标 IOU 可达 $`\ge 0.7`$ 量级；继续增加后提升趋缓，论文归因于固定阈值 thr、silhouette 误差与单次过站信息有限。
+  - Fig. 21 显示 NN silhouette 曲线显著优于 CFAR；当总图像帧数 $`\ge 20`$（即 $`F\ge 10`$）且视角误差 $`\le 2^\circ`$ 时，IOU 可超过 0.7（图中红虚线门限）。
+  - 结论部分进一步总结：当 joint 帧数大于 10、视角误差小于 $`2^\circ`$ 时，可达到 voxel IOU $`>0.72`$。
 
 <table>
   <tr>
@@ -292,26 +292,26 @@ $$
 
 # F. 对比结论与复盘
 ## F1. 作者声称的核心贡献点
-- 贡献 1：采用编码器–解码器分割网络与平行四边形几何先验实现自动结构特征提取，并用 NN 预测结构级 silhouette 替代 CFAR/人工。（Sec. I, Sec. III-B）
-- 贡献 2：用最小二乘优化替代 PSO 等策略，实现对自旋目标动态参数（姿态/投影向量/有效旋转相关量）的稳健估计，扩展投影关系类 3-D 重建到自旋场景。（Sec. I, Sec. III-A, Algorithm 1）
-- 贡献 3：提出统一“等效相机投影矩阵”的 silhouette 体素重建框架，融合校准后的 ISAR 与光学结构轮廓，实现结构级 3-D 体素重建。（Sec. I, Sec. IV-B, Eq. (30)–(39)）
+- 贡献 1：采用编码器–解码器分割网络与平行四边形几何先验实现自动结构特征提取，并用 NN 预测结构级 silhouette 替代 CFAR/人工。
+- 贡献 2：用最小二乘优化替代 PSO 等策略，实现对自旋目标动态参数（姿态/投影向量/有效旋转相关量）的稳健估计，扩展投影关系类 3-D 重建到自旋场景。
+- 贡献 3：提出统一“等效相机投影矩阵”的 silhouette 体素重建框架，融合校准后的 ISAR 与光学结构轮廓，实现结构级 3-D 体素重建。
 
 ## F2. 痛点—解决—证据
-- 痛点（来自 B1）：仅靠 ISAR 难以确定自旋目标投影关系与动态姿态。（Sec. I, Sec. II）
-  - 对应解决（来自 D2+D4）：用 joint 图像对的长/短边投影长度最小二乘解 $`\mathbf{s}_l,\mathbf{s}_s`$，进而解 $`\mathbf{k}_{\mathrm{radar},d}`$ 与 $`\|\boldsymbol{\omega}_{\mathrm{eff}}\|`$，并做跨帧投影对齐与方位尺度校准。（Sec. III-A, Algorithm 1, Sec. IV-A）
-  - 证据（来自 E4）：Configuration VI 显著优于未估计/未校准的配置（IV/V），平均 IOU 达 0.7620。（Sec. V-D, Table IX–X, Fig. 20）
+- 痛点（来自 B1）：仅靠 ISAR 难以确定自旋目标投影关系与动态姿态。
+  - 对应解决（来自 D2+D4）：用 joint 图像对的长/短边投影长度最小二乘解 $`\mathbf{s}_l,\mathbf{s}_s`$，进而解 $`\mathbf{k}_{\mathrm{radar},d}`$ 与 $`\|\boldsymbol{\omega}_{\mathrm{eff}}\|`$，并做跨帧投影对齐与方位尺度校准。
+  - 证据（来自 E4）：Configuration VI 显著优于未估计/未校准的配置（IV/V），平均 IOU 达 0.7620。
 
-- 痛点（来自 B2）：光学纹理不足导致传统特征匹配 3-D 方法不稳。（Sec. I）
-  - 对应解决（来自 D5）：用 silhouette（SFS）统一处理 ISAR 与光学，避免依赖纹理特征匹配。（Sec. I, Sec. IV-B）
-  - 证据（来自 E3）：三轴稳定条件下 only optical 与 joint 均可获得 $`>0.6`$ 的 voxel IOU，而 only ISAR 失败，体现 silhouette+互补视角对几何信息的重要性。（Sec. V-D, Table VIII）
+- 痛点（来自 B2）：光学纹理不足导致传统特征匹配 3-D 方法不稳。
+  - 对应解决（来自 D5）：用 silhouette（SFS）统一处理 ISAR 与光学，避免依赖纹理特征匹配。
+  - 证据（来自 E3）：三轴稳定条件下 only optical 与 joint 均可获得 $`>0.6`$ 的 voxel IOU，而 only ISAR 失败，体现 silhouette+互补视角对几何信息的重要性。
 
-- 痛点（来自 B3）：散射点提取/关联困难且易受各向异性与遮挡影响。（Sec. I）
-  - 对应解决（来自 D3+D5）：直接学习结构级轮廓并以体素一致性累积重建，避免散射点关联链条。（Abstract, Sec. III-B, Sec. IV-B）
-  - 证据（来自 E1+E4）：Deeplabv3+ solar panel IOU $`>0.87`$，且 NN silhouette 用于重建显著优于 CFAR silhouette（Configuration VI vs VII）。（Sec. V-B, Table V; Sec. V-D, Table X）
+- 痛点（来自 B3）：散射点提取/关联困难且易受各向异性与遮挡影响。
+  - 对应解决（来自 D3+D5）：直接学习结构级轮廓并以体素一致性累积重建，避免散射点关联链条。
+  - 证据（来自 E1+E4）：Deeplabv3+ solar panel IOU $`>0.87`$，且 NN silhouette 用于重建显著优于 CFAR silhouette（Configuration VI vs VII）。
 
 ## F3. 局限性/未来工作
-- 局限性：算法适用于具有矩形太阳翼的目标，且要求 ISAR 与光学成像质量相对较高；分割模型在特定角度存在坏例，实验中需要剔除明显错误帧。（Sec. V-C, Sec. VI）
-- 未来工作：将视角误差与非理想成像条件纳入 joint 优化；并通过为其他结构（如圆柱、椭球）设计特征提取扩展适用性。（Sec. VI）
+- 局限性：算法适用于具有矩形太阳翼的目标，且要求 ISAR 与光学成像质量相对较高；分割模型在特定角度存在坏例，实验中需要剔除明显错误帧。
+- 未来工作：将视角误差与非理想成像条件纳入 joint 优化；并通过为其他结构（如圆柱、椭球）设计特征提取扩展适用性。
 
 
 ## 2. 缺失信息处理记录
