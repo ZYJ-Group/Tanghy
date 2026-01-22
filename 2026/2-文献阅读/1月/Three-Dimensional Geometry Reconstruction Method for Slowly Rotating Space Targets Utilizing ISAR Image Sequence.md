@@ -11,6 +11,10 @@
 
 ## A2. 系统/几何/坐标系语境（如论文有）(Sec. 2.1; Sec. 2.2.3; Fig. 1; Fig. 3; Fig. 4)
 作者把几何推导放在轨道坐标系 OCS 中完成，同时需要把雷达观测坐标系 ROCS 中得到的观测量变换到 OCS，才能构造投影向量并进入后续估计与重建。  
+|  |  |  |
+|---|---|---|
+| <img width="582" height="447" alt="image" src="https://github.com/user-attachments/assets/883408fb-328a-47c4-9ec2-23d9b221e2b1" /> | <img width="534" height="436" alt="image" src="https://github.com/user-attachments/assets/5c37c9ed-cf7d-4f84-99b2-7d1a4307dad2" /> | <img width="696" height="316" alt="image" src="https://github.com/user-attachments/assets/adfc3ce3-ea6c-4f63-88bf-5e219be841d9" /> |
+
 Fig. 1 给出 OCS 下的目标自旋与 LOS 几何；Fig. 3 给出 ROCS/ECI/OCS 的变换关系；Fig. 4 给出 range–Doppler 坐标到图像像素的映射。
 
 ---
@@ -27,6 +31,7 @@ Fig. 1 给出 OCS 下的目标自旋与 LOS 几何；Fig. 3 给出 ROCS/ECI/OCS 
 # C. 作者整体思路（总体框架）(Sec. 2; Fig. 2)
 ## C1. 端到端管线（Pipeline）(Sec. 2.2.1; Sec. 2.2.4–2.2.5; Fig. 2)
 作者先建立 SRST 的显式投影模型，把 3D 散射点投影到每帧 ISAR 的 range/Doppler 坐标；再用“投影到 ISAR 序列的能量累积应最大”构造目标函数，把转动参数估计转成优化问题并用 QPSO 搜索；最后在最优转动参数下，执行 ISEA 风格的逐点提取与残差更新，输出 3D 点云。
+<img width="625" height="690" alt="image" src="https://github.com/user-attachments/assets/04bf55c6-578d-40a9-a5da-324e9c90add6" />
 
 ---
 
@@ -184,15 +189,48 @@ $$
 
 ## E2. 实验 1：简单点模型的参数估计误差与点云重建误差是否足够小 (Sec. 3.1; Table 1–2; Fig. 5–7)
 作者用点模型给出转速误差、转轴误差、点云 RMSE 与投影序列相似度，并用“投影序列 vs ISAR 序列”形成闭环证据。
+|  |  |  |
+|---|---|---|
+| <img width="811" height="614" alt="image" src="https://github.com/user-attachments/assets/3df6e180-d9b6-4e7d-bd58-42dcfff0e076" /> | <img width="831" height="613" alt="image" src="https://github.com/user-attachments/assets/d166e6e4-9388-4384-9596-ed774df9dcd6" /> | <img width="849" height="379" alt="image" src="https://github.com/user-attachments/assets/d3f0e2b5-795f-475d-9cfd-8548e1d6b276" /> |
+
+
 
 ## E3. 实验 2：SRST 条件下传统方法是否失效、本文是否仍保持一致性 (Sec. 3.1; Fig. 8–9; Table 3)
 作者分别在非旋转与慢速旋转两种状态下对比因子分解、ISEA 与本文方法，结果显示慢旋转下传统方法相似度显著下降，本文保持高一致性。
 
+|  |
+|---|
+| <img width="900" height="313" alt="image" src="https://github.com/user-attachments/assets/5f9c30c3-5fba-4ffd-95f6-c9387b17b8ed" /> |
+
+|  |
+|---|
+| <img width="887" height="552" alt="image" src="https://github.com/user-attachments/assets/95eba8d4-cdfe-49d5-819a-34fcf5708e44" /> |
+
+
 ## E4. 实验 3：复杂结构 ENVISAT 点云是否能恢复关键结构并保持一致性 (Sec. 3.2; Fig. 10–12; Table 4)
 作者在高点数复杂点云上验证转动参数估计精度，并展示重建点云能辨识主体、太阳翼与天线等关键结构，同时投影序列相似度仍高。
 
+|  |  |
+|---|---|
+| <img width="798" height="578" alt="image" src="https://github.com/user-attachments/assets/f8135339-8b31-420b-8cff-3fbdd3337b28" /> | <img width="669" height="517" alt="image" src="https://github.com/user-attachments/assets/c493b9c4-22e9-4a5f-8dfc-97a0cec6d432" /> |
+
+|  |
+|---|
+| <img width="839" height="378" alt="image" src="https://github.com/user-attachments/assets/c7c7ffe8-7d09-4ffc-ab1c-01591b50e2c9" /> |
+
+
 ## E5. 实验 4：天宫一号电磁 CAD 仿真数据下是否仍有效、缺失结构如何解释 (Sec. 3.3; Fig. 13–15; Table 5)
 作者在更接近真实散射的电磁仿真数据上仍能估计转动参数并重建主要结构；部分缺失由“多数观测时刻未被有效照射导致能量不足”解释。
+
+|  |  |
+|---|---|
+| <img width="821" height="610" alt="image" src="https://github.com/user-attachments/assets/8d7119cb-53d7-4ded-a3f7-5676b1c48bf0" /> | <img width="690" height="543" alt="image" src="https://github.com/user-attachments/assets/1cabbba5-7af6-4525-9d88-fae9c742bbed" /> |
+
+|  |
+|---|
+| <img width="851" height="387" alt="image" src="https://github.com/user-attachments/assets/d7eb30bd-651a-4f7f-96cd-f9ffdebd0e8a" /> |
+
+
 
 ---
 
