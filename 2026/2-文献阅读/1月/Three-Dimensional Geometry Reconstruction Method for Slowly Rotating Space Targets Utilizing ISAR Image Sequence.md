@@ -48,29 +48,6 @@ Fig. 1 给出 OCS 下的目标自旋与 LOS 几何；Fig. 3 给出 ROCS/ECI/OCS 
 4) 将 range 写成 LOS 内积，将 Doppler 写成 range 的慢时间导数，得到 Doppler 中同时包含 LOS 变化项与自旋项。  
 5) 将 3D 散射点到每帧 ISAR 坐标写成对 3D 坐标的线性投影，投影向量显式含自旋耦合项。
 
-**关键公式**  
-
-$$
-\begin{bmatrix}
-f_n^{k}\\
-r_n^{k}
-\end{bmatrix}=
-\begin{bmatrix}
-(\boldsymbol{\rho}^{k}_{d})^{\mathsf{T}}\\
-(\boldsymbol{\rho}^{k}_{r})^{\mathsf{T}}
-\end{bmatrix}
-\boldsymbol{p}_n
-$$
-- 含义：把第 $`k`$ 帧 ISAR 的 Doppler/Range 坐标写成散射点 3D 坐标 $`\boldsymbol{p}_n`$ 的线性投影。  
-- 符号：$`r_n^{k}`$ 为 range 维位置，$`f_n^{k}`$ 为 Doppler 维位置，$`\boldsymbol{\rho}^{k}_{r},\boldsymbol{\rho}^{k}_{d}`$ 为对应投影向量，$`\boldsymbol{p}_n`$ 为第 $`n`$ 个散射点 3D 坐标。 (Eq. (10), Sec. 2.1)
-
-$$
-\boldsymbol{\rho}^{k}_{r}=\mathbf{R}_r(t_k)^{\mathsf{T}}\boldsymbol{l}(t_k),
-\qquad
-\boldsymbol{\rho}^{k}_{d}=-\frac{2}{\lambda}\left[\mathbf{R}_r(t_k)^{\mathsf{T}}\frac{\partial \boldsymbol{l}}{\partial t}(t_k)+\left(\frac{\partial \mathbf{R}_r}{\partial t}(t_k)\right)^{\mathsf{T}}\boldsymbol{l}(t_k)\right]
-$$
-- 含义：投影向量由 LOS 项与自旋项共同决定，后者体现 SRST 相对三轴稳定目标的关键差异。  
-- 符号：$`\boldsymbol{l}(t_k)`$ 为 LOS 单位向量，$`\mathbf{R}_r(t_k)`$ 为绕转轴的旋转矩阵，$`\lambda`$ 为载波波长。 (Eq. (11)–(12), Sec. 2.1)
 
 **流程步骤**  
 1) 在 OCS 中定义 LOS 与转轴，并建立固定轴匀速旋转模型。  
@@ -106,25 +83,6 @@ $$
 1) 用 ECI 的位置向量与速度向量构造 OCS 三轴方向。  
 2) 构造 ROCS→ECI 变换，再与 ECI→OCS 变换链路相乘得到 LOS 的 OCS 表达。  
 3) 基于 LOS 及其时间变化构造 LOS 项投影向量分量。
-
-**关键公式**  
-
-$$
-\boldsymbol{l}=\mathbf{H}_{E2O}\mathbf{H}_{R2E}\boldsymbol{l}_{\mathrm{ROCS}}
-$$
-- 含义：把 ROCS 的 LOS 变换到 OCS，确保后续投影与优化在统一坐标系内计算。  
-- 符号：$`\boldsymbol{l}_{\mathrm{ROCS}}`$ 为 ROCS 的 LOS，$`\boldsymbol{l}`$ 为 OCS 的 LOS，$`\mathbf{H}_{R2E}`$ 为 ROCS→ECI，$`\mathbf{H}_{E2O}`$ 为 ECI→OCS。 (Eq. (21), Sec. 2.2.3)
-
-$$
-\mathbf{H}_{R2E}=
-\begin{bmatrix}
-\dfrac{\boldsymbol{u}\times \boldsymbol{v}\times \boldsymbol{u}}{\lVert \boldsymbol{u}\times \boldsymbol{v}\times \boldsymbol{u}\rVert}\\[6pt]
-\dfrac{\boldsymbol{u}\times \boldsymbol{v}}{\lVert \boldsymbol{u}\times \boldsymbol{v}\rVert}\\[6pt]
-\dfrac{\boldsymbol{u}}{\lVert \boldsymbol{u}\rVert}
-\end{bmatrix}^{\mathsf{T}}
-$$
-- 含义：利用位置向量 $`\boldsymbol{u}`$ 与速度向量 $`\boldsymbol{v}`$ 构造 ROCS→ECI 的方向基，支撑 LOS 的坐标统一。  
-- 符号：$`\boldsymbol{u}`$ 为位置向量，$`\boldsymbol{v}`$ 为速度向量。 (Eq. (22), Sec. 2.2.3)
 
 **流程步骤**  
 1) 用轨道状态构造坐标系基与变换矩阵。  
