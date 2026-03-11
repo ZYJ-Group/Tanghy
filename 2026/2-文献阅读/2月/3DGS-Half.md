@@ -132,7 +132,8 @@ $$
   1) 参数共享：一对 Half-Gaussian 共享均值、旋转、尺度、颜色，仅学习分割平面方向与两侧不透明度，提高参数效率 (Sec. 3.3)  
   2) 渲染表达：把“两半积分结果”合并成一个等效的 2D 响应 $`\hat{HG}`$，其形式仍是 2D 高斯乘以可学习的系数 (Eq. (11), Sec. 3.3)  
   3) rasterizer 前向与反向在 vanilla 3D-GS 基础上按 $`\hat{HG}`$ 修改，保持整体计算框架不变 (Sec. 4.1)  
-- 关键公式：  
+- 关键公式：
+
 $$
 C = \sum_{i \in \mathcal{N}} c_i\, \hat{HG}_i(\hat{x}-\hat{\mu}_i)\, \prod_{j=1}^{i-1}\bigl(1-\hat{HG}_j(\hat{x}-\hat{\mu}_j)\bigr).
 $$
